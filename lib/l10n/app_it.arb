@@ -1,0 +1,12 @@
+{
+  "helloWorld": "Ciao Mondo!",
+  "welcome": "Benvenuto nell'applicazione per la generazione di un account Desmos!",
+  "toolDescription": "Quest'app ti servira' per creare un account Desmos in modo sicuro cosi' che tu possa ricevere i DSM che hai comprato o ottenuto come ricompensa",
+  "generateAccount": "Genera account",
+  "generatedAccountText": "Di seguito puoi trovare i dettagli dell'account generato. Se vuoi, puoi generarne uno nuovo premendo il bottone sottostante",
+  "address": "Indirizzo",
+  "textCopied": "Copiato negli appunti",
+  "generateNewAccount": "Genera nuovo account",
+
+  "onlyWayRestore": "E' l'%s di ripristinare l'account"
+}

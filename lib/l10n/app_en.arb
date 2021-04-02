@@ -1,0 +1,54 @@
+{
+  "welcome": "Welcome to Desmos network",
+  "@welcome": {
+    "description": "The message used to greet the user inside the application"
+  },
+
+  "importMnemonic": "Import mnemonic phrase",
+  "@importMnemonic": {
+    "description": "Text of the button that allows the user to import a mnemonic phrase"
+  },
+  "generateAccount": "Generate account",
+  "@generateAccount": {
+    "description": "Text of the button that allows the user to generate an account"
+  },
+
+
+  "generateAccountPageTitle": "Generate an account",
+  "@generateAccountPageTitle": {
+    "description": "Title of the page used to generate a new account"
+  },
+  "writeSaveMnemonic": "Please write down and save your mnemonic phrase.",
+  "@writeSaveMnemonic": {
+    "description": "Text used to tell the user to write down and save the mnemonic phrase"
+  },
+  "onlyWayRestore": "It's the %s to restore the account.",
+  "@onlyWayRestore": {
+    "description": "Text used to tell the user that saving the mnemonic phrase is the only way to restore the account. The %s parameter will be replaced with the 'ONLY WAY' bold text"
+  },
+  "onlyWay": "only way",
+  "@onlyWay": {
+    "description": "This text will be put inside the above onlyWayRestore replacing the %s symbol"
+  },
+  "random": "Random",
+  "@random": {
+    "description": "This text will be present inside the button that allows to generate a random mnemonic phrase"
+  },
+
+  "accountGenerated": "Desmos account has been generated successfully",
+  "@accountGenerated": {
+    "description": "Text shown to the user when they have generated the account properly"
+  },
+  "desmosAddress": "Desmos address",
+  "@desmosAddress": {
+    "description": "Label used to describe the Desmos address output"
+  },
+  "copy": "Copy",
+  "@copy": {
+    "description": "Label of a button allowing to copy something"
+  },
+  "textCopied": "Text copied inside the clipboard",
+  "@textCopied": {
+    "description": "Message shown to the user when he copies a text inside the device clipboard"
+  }
+}
