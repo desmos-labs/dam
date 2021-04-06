@@ -50,5 +50,22 @@
   "textCopied": "Text copied inside the clipboard",
   "@textCopied": {
     "description": "Message shown to the user when he copies a text inside the device clipboard"
+  },
+
+  "importMnemonicPageTitle": "Import mnemonic phrase",
+  "@importMnemonicPageTitle": {
+    "description": "Title of the page that will be used to import an existing mnemonic phrase"
+  },
+  "importMnemonicBody": "Please enter your mnemonic phrase in order and make sure each word is written correctly",
+  "@importMnemonicBody": {
+    "description": "Text used to tell the user to insert their mnemonic phrase"
+  },
+  "nextButtonText": "Next",
+  "@nextButtonText": {
+    "description": "Button used to go to the next page when the user has imported their mnemonic phrase"
+  },
+  "mnemonicNotValidError": "Mnemonic is not valid",
+  "@mnemonicNotValidError": {
+    "description": "Error message that is shown to the user when the mnemonic is not valid"
   }
 }

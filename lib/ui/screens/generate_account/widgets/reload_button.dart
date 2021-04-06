@@ -16,7 +16,11 @@ class ReloadButton extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.asset('assets/icon-reload.svg', height: 12, width: 12),
+          SvgPicture.asset(
+            'assets/icon-reload.svg',
+            height: 12,
+            width: 12,
+          ),
           SizedBox(width: 6),
           Text(
             AppLocalizations.of(context).random,

@@ -4,11 +4,15 @@ import 'package:dam/ui/export.dart';
 /// Represents the overall mnemonic input that allows the user to insert a 24
 /// words seed phrase.
 class MnemonicInput extends StatelessWidget {
+  final bool editable;
   final List<String> words;
+  final void Function(int index, String word) onWordChanged;
 
   const MnemonicInput({
     Key key,
+    this.editable = false,
     this.words = const [],
+    this.onWordChanged,
   }) : super(key: key);
 
   @override
@@ -21,9 +25,10 @@ class MnemonicInput extends StatelessWidget {
       shrinkWrap: true,
       primary: false,
       children: List.generate(24, (index) {
-        return MnemonicWord(
+        return MnemonicWordInput(
           index: index + 1,
-          editable: words.isEmpty,
+          editable: editable,
+          onWordChanged: onWordChanged,
           word: words.isEmpty ? null : words[index],
         );
       }),

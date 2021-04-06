@@ -19,8 +19,9 @@ class PrimaryButton extends StatelessWidget {
           child: TextButton(
             onPressed: onPressed,
             style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all(Theme.of(context).primaryColor),
+              backgroundColor: MaterialStateProperty.resolveWith(
+                (states) => getButtonColor(context, states),
+              ),
             ),
             child: Text(
               text,
@@ -34,5 +35,12 @@ class PrimaryButton extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Color getButtonColor(BuildContext context, Set<MaterialState> states) {
+    if (states.contains(MaterialState.disabled)) {
+      return Theme.of(context).disabledColor;
+    }
+    return Theme.of(context).primaryColor;
   }
 }

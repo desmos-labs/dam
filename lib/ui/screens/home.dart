@@ -51,14 +51,16 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-}
 
-void _navigateToGenerator(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return GenerateAccountPage();
-  }));
-}
+  void _navigateToGenerator(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return GenerateAccountPage();
+    }));
+  }
 
-void _navigateToImportMnemonic(BuildContext context) {
-  // TODO
+  void _navigateToImportMnemonic(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return ImportMnemonicPhrasePage();
+    }));
+  }
 }

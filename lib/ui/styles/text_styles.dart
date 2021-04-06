@@ -45,10 +45,10 @@ class DesmosTextStyles {
 
   static TextStyle thinBodyBlack(BuildContext context) {
     return Theme.of(context).textTheme.bodyText1.copyWith(
-      color: Colors.black,
-      fontSize: 14,
-      fontWeight: FontWeight.w400,
-    );
+          color: Colors.black,
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+        );
   }
 
   static TextStyle boldBody(BuildContext context) {
@@ -63,6 +63,14 @@ class DesmosTextStyles {
     return Theme.of(context).textTheme.bodyText1.copyWith(
           color: DesmosColors.blue,
           fontSize: 14,
+          fontWeight: FontWeight.w400,
+        );
+  }
+
+  static TextStyle error(BuildContext context) {
+    return Theme.of(context).textTheme.bodyText1.copyWith(
+          color: Color(0xFFFF0404),
+          fontSize: 16,
           fontWeight: FontWeight.w400,
         );
   }
