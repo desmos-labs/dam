@@ -13,50 +13,52 @@ class GeneratedAccountBody extends StatelessWidget {
   final void Function() onGenerateAccountPressed;
 
   const GeneratedAccountBody({
-    Key key,
-    @required this.words,
-    @required this.onRandomPressed,
-    @required this.onGenerateAccountPressed,
+    Key? key,
+    required this.words,
+    required this.onRandomPressed,
+    required this.onGenerateAccountPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final texts = [
+      Text(
+        AppLocalizations.of(context)!.writeSaveMnemonic,
+        style: DesmosTextStyles.thinBodyGrey(context),
+      ),
+      getBodyText(context),
+    ];
+
     return Container(
-      padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      padding: DesmosPlatform.isMobile
+          ? EdgeInsets.only(left: 16, right: 16, bottom: 16)
+          : EdgeInsets.symmetric(horizontal: 360, vertical: 160),
       child: Column(
         children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      AppLocalizations.of(context).generateAccountPageTitle,
-                      style: DesmosTextStyles.title(context),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      AppLocalizations.of(context).writeSaveMnemonic,
-                      style: DesmosTextStyles.thinBodyGrey(context),
-                    ),
-                    getBodyText(context),
-                  ],
-                ),
-                Flexible(child: MnemonicInput(words: words)),
-                SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ReloadButton(onPressed: onRandomPressed),
-                  ],
-                ),
-              ],
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                AppLocalizations.of(context)!.generateAccountPageTitle,
+                style: DesmosTextStyles.title(context),
+              ),
+              SizedBox(height: 8),
+              DesmosPlatform.isMobile
+                  ? Column(children: texts)
+                  : Row(children: [texts[0], SizedBox(width: 4), texts[1]]),
+              MnemonicInput(words: words),
+              SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ReloadButton(onPressed: onRandomPressed),
+                ],
+              ),
+            ],
           ),
+          SizedBox(height: DesmosPlatform.isMobile ? 36 : 60),
           PrimaryButton(
-            text: AppLocalizations.of(context).generateAccount,
+            text: AppLocalizations.of(context)!.generateAccount,
             onPressed: onGenerateAccountPressed,
           ),
         ],
@@ -69,10 +71,10 @@ class GeneratedAccountBody extends StatelessWidget {
   /// We do this because the line contains a bold part, which must be handled
   /// as a separate [TextSpan].
   Widget getBodyText(BuildContext context) {
-    final bodyText = AppLocalizations.of(context).onlyWayRestore;
-    final onlyWay = AppLocalizations.of(context).onlyWay.toUpperCase();
+    final bodyText = AppLocalizations.of(context)!.onlyWayRestore;
+    final onlyWay = AppLocalizations.of(context)!.onlyWay.toUpperCase();
 
-    final parts = bodyText.split("%s").map((text) {
+    final parts = bodyText.split('%s').map((text) {
       return TextSpan(
         text: text,
         style: DesmosTextStyles.thinBodyGrey(context),

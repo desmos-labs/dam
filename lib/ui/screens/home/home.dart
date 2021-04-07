@@ -1,0 +1,37 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:dam/ui/export.dart';
+
+import 'content/export.dart';
+
+/// This widget represents the home page of the application, which is the
+/// main screen that is shown to the user when they open the app.
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: DesmosPlatform.isMobile
+          ? MobileContent(
+              navigateToGenerate: () => _navigateToGenerator(context),
+              navigateToImport: () => _navigateToImportMnemonic(context),
+            )
+          : DesktopContent(
+              navigateToImport: () => _navigateToImportMnemonic(context),
+              navigateToGenerate: () => _navigateToGenerator(context),
+            ),
+    );
+  }
+
+  void _navigateToGenerator(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return GenerateAccountPage();
+    }));
+  }
+
+  void _navigateToImportMnemonic(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return ImportMnemonicPhrasePage();
+    }));
+  }
+}

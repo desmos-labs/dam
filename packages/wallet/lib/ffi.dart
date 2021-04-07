@@ -1,7 +1,6 @@
 /// bindings for `libaddr`
 import 'dart:ffi';
 import 'dart:io';
-import 'package:ffi/ffi.dart';
 
 /// Loads the native wallet library from the provided base path.
 /// If no path is provided, then it uses the default OS-specific one.

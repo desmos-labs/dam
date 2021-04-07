@@ -15,11 +15,10 @@ class GenerateAccountLoading extends GenerateAccountState {
 class GenerateAccountLoaded extends GenerateAccountState {
   final List<String> mnemonic;
 
-  GenerateAccountLoaded({@required List<String> mnemonic})
-      : assert(mnemonic != null),
-        assert(mnemonic.isNotEmpty),
-        this.mnemonic = mnemonic;
+  GenerateAccountLoaded({required List<String> mnemonic})
+      : assert(mnemonic.isNotEmpty),
+        mnemonic = mnemonic;
 
   @override
-  List<Object> get props => [this.mnemonic];
+  List<Object> get props => [mnemonic];
 }

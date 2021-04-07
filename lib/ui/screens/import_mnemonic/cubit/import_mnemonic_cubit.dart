@@ -1,7 +1,7 @@
+import 'package:alan/alan.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:bip39/bip39.dart' as bip39;
-import 'package:flutter/foundation.dart';
+import 'package:dam/wallet/export.dart';
 
 part 'import_mnemonic_state.dart';
 
@@ -12,9 +12,13 @@ class ImportMnemonicCubit extends Cubit<ImportMnemonicState> {
   void updateWord(int index, String word) {
     final currentState = state;
     if (currentState is ImportMnemonicState) {
-      final words = Map<int, String>  .from(currentState.mnemonicWords);
+      final words = Map<int, String>.from(currentState.mnemonicWords);
       words[index] = word;
       emit(ImportMnemonicState(mnemonic: words));
     }
+  }
+
+  String? getAddress() {
+    return DesmosWallet.getAddress(state.mnemonic);
   }
 }

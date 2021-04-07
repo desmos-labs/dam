@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.transparent,
           iconTheme: Theme.of(context).iconTheme.copyWith(
-            color: DesmosColors.grey,
-          ),
-        )
+                color: DesmosColors.grey,
+              ),
+        ),
       ),
       home: HomePage(),
     );

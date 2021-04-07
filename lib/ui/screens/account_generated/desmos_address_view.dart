@@ -5,8 +5,8 @@ class DesmosAddressViewer extends StatelessWidget {
   final String address;
 
   const DesmosAddressViewer({
-    Key key,
-    @required this.address,
+    Key? key,
+    required this.address,
   }) : super(key: key);
 
   @override
@@ -17,9 +17,14 @@ class DesmosAddressViewer extends StatelessWidget {
         color: Color(0xFFF1F1F1),
       ),
       padding: EdgeInsets.all(14),
-      child: Text(
-        address,
-        style: DesmosTextStyles.thinBodyBlack(context),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Text(
+            address,
+            style: DesmosTextStyles.thinBodyBlack(context),
+          ),
+        ],
       ),
     );
   }

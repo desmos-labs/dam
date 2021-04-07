@@ -6,10 +6,10 @@ import 'package:dam/ui/export.dart';
 class MnemonicInput extends StatelessWidget {
   final bool editable;
   final List<String> words;
-  final void Function(int index, String word) onWordChanged;
+  final void Function(int index, String word)? onWordChanged;
 
   const MnemonicInput({
-    Key key,
+    Key? key,
     this.editable = false,
     this.words = const [],
     this.onWordChanged,
@@ -18,9 +18,9 @@ class MnemonicInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.count(
-      crossAxisCount: 3,
-      crossAxisSpacing: 16,
-      mainAxisSpacing: 16,
+      crossAxisCount: DesmosPlatform.isMobile ? 3 : 6,
+      crossAxisSpacing: DesmosPlatform.isMobile ? 16 : 24,
+      mainAxisSpacing: DesmosPlatform.isMobile ? 16 : 24,
       childAspectRatio: 3,
       shrinkWrap: true,
       primary: false,

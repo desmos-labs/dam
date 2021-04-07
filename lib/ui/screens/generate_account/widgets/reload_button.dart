@@ -7,7 +7,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class ReloadButton extends StatelessWidget {
   final void Function() onPressed;
 
-  const ReloadButton({Key key, this.onPressed}) : super(key: key);
+  const ReloadButton({
+    Key? key,
+    required this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class ReloadButton extends StatelessWidget {
           ),
           SizedBox(width: 6),
           Text(
-            AppLocalizations.of(context).random,
+            AppLocalizations.of(context)!.random,
             style: DesmosTextStyles.secondaryButton(context),
           ),
         ],

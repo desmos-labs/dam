@@ -1,3 +1,4 @@
+import 'package:dam/ui/consts/export.dart';
 import 'package:flutter/material.dart';
 
 /// Represents a light-background button.
@@ -6,9 +7,9 @@ class LightButton extends StatelessWidget {
   final String text;
 
   const LightButton({
-    Key key,
-    @required this.text,
-    @required this.onPressed,
+    Key? key,
+    required this.text,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -21,13 +22,18 @@ class LightButton extends StatelessWidget {
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.white),
             ),
-            child: Text(
-              text,
-              style: Theme.of(context).textTheme.button.copyWith(
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                  ),
+            child: Container(
+              padding: DesmosPlatform.isMobile
+                  ? EdgeInsets.zero
+                  : EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                text,
+                style: Theme.of(context).textTheme.button!.copyWith(
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                    ),
+              ),
             ),
           ),
         ),

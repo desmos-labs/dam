@@ -1,7 +1,7 @@
+import 'package:alan/alan.dart';
 import 'package:bloc/bloc.dart';
+import 'package:dam/wallet/desmos_wallet.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
-import 'package:bip39/bip39.dart' as bip39;
 
 part 'generate_account_state.dart';
 
@@ -11,8 +11,16 @@ class GenerateAccountCubit extends Cubit<GenerateAccountState> {
   GenerateAccountCubit() : super(GenerateAccountLoading());
 
   void random() {
-    final mnemonic = bip39.generateMnemonic(strength: 256);
-    final mnemonicWords = mnemonic.split(" ");
-    emit(GenerateAccountLoaded(mnemonic: mnemonicWords));
+    final mnemonic = Bip39.generateMnemonic(strength: 256);
+    emit(GenerateAccountLoaded(mnemonic: mnemonic));
+  }
+
+  String? getAddress() {
+    final currentState = state;
+    if (currentState is GenerateAccountLoaded) {
+      return DesmosWallet.getAddress(currentState.mnemonic);
+    }
+
+    return null;
   }
 }

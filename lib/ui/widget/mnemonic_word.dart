@@ -7,13 +7,13 @@ class MnemonicWordInput extends StatelessWidget {
   final int index;
   final bool editable;
 
-  final String word;
-  final void Function(int, String) onWordChanged;
+  final String? word;
+  final void Function(int, String)? onWordChanged;
 
   MnemonicWordInput({
-    Key key,
-    @required this.index,
-    @required this.editable,
+    Key? key,
+    required this.index,
+    required this.editable,
     this.word,
     this.onWordChanged,
   }) : super(key: key);
@@ -24,7 +24,7 @@ class MnemonicWordInput extends StatelessWidget {
       enabled: editable,
       maxLines: 1,
       textInputAction: TextInputAction.next,
-      controller: TextEditingController()..text = word,
+      controller: TextEditingController()..text = word ?? "",
       onChanged: (value) => onWordChanged?.call(index, value),
       decoration: InputDecoration(
         prefixIcon: Padding(

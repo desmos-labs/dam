@@ -11,8 +11,8 @@ class AccountGeneratedPage extends StatelessWidget {
   final String address;
 
   const AccountGeneratedPage({
-    Key key,
-    @required this.address,
+    Key? key,
+    required this.address,
   }) : super(key: key);
 
   @override
@@ -29,7 +29,9 @@ class AccountGeneratedPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 30),
+          padding: DesmosPlatform.isMobile
+              ? EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 30)
+              : EdgeInsets.symmetric(horizontal: 360, vertical: 160),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -37,15 +39,15 @@ class AccountGeneratedPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Image.asset('assets/account-generated.png', width: 280),
+                    Image.asset(
+                      'assets/account-generated.png',
+                      width: DesmosPlatform.isMobile ? 280 : 560,
+                    ),
                     SizedBox(height: 16),
-                    Container(
-                      width: 230,
-                      child: Text(
-                        AppLocalizations.of(context).accountGenerated,
-                        style: DesmosTextStyles.largeBody(context),
-                        textAlign: TextAlign.center,
-                      ),
+                    Text(
+                      AppLocalizations.of(context)!.accountGenerated,
+                      style: DesmosTextStyles.largeBody(context),
+                      textAlign: TextAlign.center,
                     )
                   ],
                 ),
@@ -54,14 +56,14 @@ class AccountGeneratedPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    AppLocalizations.of(context).desmosAddress,
+                    AppLocalizations.of(context)!.desmosAddress,
                     style: DesmosTextStyles.thinBodyBlack(context),
                   ),
                   SizedBox(height: 8),
                   DesmosAddressViewer(address: address),
                   SizedBox(height: 24),
                   PrimaryButton(
-                    text: AppLocalizations.of(context).copy,
+                    text: AppLocalizations.of(context)!.copy,
                     onPressed: () => _onCopyPressed(context),
                   ),
                 ],
@@ -80,7 +82,7 @@ class AccountGeneratedPage extends StatelessWidget {
   void _onCopyPressed(BuildContext context) {
     FlutterClipboard.copy(address).then((value) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(AppLocalizations.of(context).textCopied),
+        content: Text(AppLocalizations.of(context)!.textCopied),
       ));
     });
   }

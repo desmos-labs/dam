@@ -1,14 +1,15 @@
+import 'package:dam/ui/export.dart';
 import 'package:flutter/material.dart';
 
 /// Represents a primary-color background button.
 class PrimaryButton extends StatelessWidget {
-  final void Function() onPressed;
   final String text;
+  final void Function()? onPressed;
 
   const PrimaryButton({
-    Key key,
-    @required this.text,
-    @required this.onPressed,
+    Key? key,
+    required this.text,
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -23,13 +24,18 @@ class PrimaryButton extends StatelessWidget {
                 (states) => getButtonColor(context, states),
               ),
             ),
-            child: Text(
-              text,
-              style: Theme.of(context).textTheme.button.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                  ),
+            child: Container(
+              padding: DesmosPlatform.isMobile
+                  ? EdgeInsets.zero
+                  : EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                text,
+                style: Theme.of(context).textTheme.button?.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                    ),
+              ),
             ),
           ),
         ),

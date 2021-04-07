@@ -11,8 +11,8 @@ class ImportMnemonicState extends Equatable {
     }
 
     final words = List<String>.empty(growable: true);
-    for (int i = 0; i < 24; i++) {
-      final word = mnemonicWords[i + 1] ?? "";
+    for (var i = 0; i < 24; i++) {
+      final word = mnemonicWords[i + 1] ?? '';
       words.add(word);
     }
     return words;
@@ -25,16 +25,15 @@ class ImportMnemonicState extends Equatable {
 
   /// Returns true iff the inserted mnemonic phrase has some errors.
   bool get hasError {
-    return has24Words && !bip39.validateMnemonic(this.mnemonic.join(" "));
+    return has24Words && !Bip39.validateMnemonic(mnemonic);
   }
 
   ImportMnemonicState({
-    @required Map<int, String> mnemonic,
-  })  : assert(mnemonic != null),
-        this.mnemonicWords = mnemonic;
+    required Map<int, String> mnemonic,
+  }) : mnemonicWords = mnemonic;
 
   factory ImportMnemonicState.initial() {
-    return ImportMnemonicState(mnemonic: Map());
+    return ImportMnemonicState(mnemonic: {});
   }
 
   @override

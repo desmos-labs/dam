@@ -1,3 +1,4 @@
+import 'package:dam/ui/export.dart';
 import 'package:dam/ui/screens/import_mnemonic/widgets/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,7 +38,12 @@ class ImportMnemonicPhrasePage extends StatelessWidget {
 
   /// Called when the user presses the "Next" button.
   void _onNext(BuildContext context) {
-    final state = context.read<ImportMnemonicCubit>().state;
-    print(state.mnemonic);
+    final cubit = context.read<ImportMnemonicCubit>();
+    final address = cubit.getAddress();
+    if (address != null) {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+        return AccountGeneratedPage(address: address);
+      }));
+    }
   }
 }

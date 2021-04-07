@@ -7,7 +7,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class CopyableText extends StatelessWidget {
   final String text;
 
-  const CopyableText({Key key, this.text}) : super(key: key);
+  const CopyableText({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class CopyableText extends StatelessWidget {
               FlutterClipboard.copy(text).then((value) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(AppLocalizations.of(context).textCopied),
+                    content: Text(AppLocalizations.of(context)!.textCopied),
                   ),
                 );
               });
