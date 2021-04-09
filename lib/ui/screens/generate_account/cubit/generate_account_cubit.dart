@@ -12,13 +12,16 @@ class GenerateAccountCubit extends Cubit<GenerateAccountState> {
 
   void random() {
     final mnemonic = Bip39.generateMnemonic(strength: 256);
-    emit(GenerateAccountLoaded(mnemonic: mnemonic));
+    emit(GenerateAccountLoaded.initial(mnemonic));
   }
 
   String? getAddress() {
     final currentState = state;
     if (currentState is GenerateAccountLoaded) {
-      return DesmosWallet.getAddress(currentState.mnemonic);
+      emit(currentState.copy(creatingAddress: true));
+      final address = DesmosWallet.getAddress(currentState.mnemonic);
+      emit(currentState.copy(creatingAddress: false));
+      return address;
     }
 
     return null;

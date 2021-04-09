@@ -27,8 +27,8 @@ class DesktopContent extends StatelessWidget {
       child: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 216),
             SvgPicture.asset('assets/desmos-icon.svg', width: 200),
             SizedBox(height: 30),
             Text(

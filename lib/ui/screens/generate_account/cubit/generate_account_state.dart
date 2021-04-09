@@ -13,12 +13,29 @@ class GenerateAccountLoading extends GenerateAccountState {
 /// State that is used to represent the fact that the mnemonic phrase has been
 /// loaded properly and should be visualized by the user.
 class GenerateAccountLoaded extends GenerateAccountState {
+  final bool creatingAddress;
   final List<String> mnemonic;
 
-  GenerateAccountLoaded({required List<String> mnemonic})
-      : assert(mnemonic.isNotEmpty),
+  GenerateAccountLoaded({
+    required this.creatingAddress,
+    required List<String> mnemonic,
+  })   : assert(mnemonic.isNotEmpty),
         mnemonic = mnemonic;
 
+  factory GenerateAccountLoaded.initial(List<String> mnemonic) {
+    return GenerateAccountLoaded(creatingAddress: false, mnemonic: mnemonic);
+  }
+
   @override
-  List<Object> get props => [mnemonic];
+  List<Object> get props => [creatingAddress, mnemonic];
+
+  GenerateAccountLoaded copy({
+    bool? creatingAddress,
+    List<String>? mnemonic,
+  }) {
+    return GenerateAccountLoaded(
+      creatingAddress: creatingAddress ?? this.creatingAddress,
+      mnemonic: mnemonic ?? this.mnemonic,
+    );
+  }
 }

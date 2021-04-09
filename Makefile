@@ -1,4 +1,4 @@
-FILES=-name '*.dart' ! -name '*.g.dart' ! -path './dart_tool' ! -path '*/generated/*' ! -path '*/proto/*'
+FILES=-name '*.dart' ! -name '*.g.dart' ! -path './dart_tool' ! -path '*/generated/*' ! -path '*/proto/*' ! -name "*localizations*.dart"
 
 lint:
 	find . $(FILES) | tr '\n' ' ' | xargs flutter format --dry-run --set-exit-if-changed

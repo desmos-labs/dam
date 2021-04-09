@@ -2,6 +2,7 @@ part of 'import_mnemonic_cubit.dart';
 
 /// State of the "Import mnemonic" page.
 class ImportMnemonicState extends Equatable {
+  final bool creatingAddress;
   final Map<int, String> mnemonicWords;
 
   /// Returns the list of mnemonic words that have been entered till now.
@@ -29,13 +30,24 @@ class ImportMnemonicState extends Equatable {
   }
 
   ImportMnemonicState({
-    required Map<int, String> mnemonic,
-  }) : mnemonicWords = mnemonic;
+    required this.mnemonicWords,
+    required this.creatingAddress,
+  });
 
   factory ImportMnemonicState.initial() {
-    return ImportMnemonicState(mnemonic: {});
+    return ImportMnemonicState(mnemonicWords: {}, creatingAddress: false);
+  }
+
+  ImportMnemonicState copy({
+    Map<int, String>? mnemonicWords,
+    bool? creatingAddress,
+  }) {
+    return ImportMnemonicState(
+      mnemonicWords: mnemonicWords ?? this.mnemonicWords,
+      creatingAddress: creatingAddress ?? this.creatingAddress,
+    );
   }
 
   @override
-  List<Object> get props => [mnemonicWords];
+  List<Object> get props => [mnemonicWords, creatingAddress];
 }

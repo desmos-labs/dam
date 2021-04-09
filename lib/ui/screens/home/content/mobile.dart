@@ -23,37 +23,41 @@ class MobileContent extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
-      padding: EdgeInsets.symmetric(vertical: 40, horizontal: 15),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Column(
+      child: SafeArea(
+        child: Container(
+          padding: EdgeInsets.all(16),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 35),
-                SvgPicture.asset('assets/desmos-icon.svg', width: 90),
-                SizedBox(height: 19),
-                Text(
-                  AppLocalizations.of(context)!.welcome,
-                  style: DesmosTextStyles.thinHeader(context),
+                Column(
+                  children: [
+                    SizedBox(height: 35),
+                    SvgPicture.asset('assets/desmos-icon.svg', width: 90),
+                    SizedBox(height: 19),
+                    Text(
+                      AppLocalizations.of(context)!.welcome,
+                      style: DesmosTextStyles.thinHeader(context),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    LightButton(
+                      text: AppLocalizations.of(context)!.importMnemonic,
+                      onPressed: navigateToImport,
+                    ),
+                    SizedBox(height: 16),
+                    LightButton(
+                      text: AppLocalizations.of(context)!.generateAccount,
+                      onPressed: navigateToGenerate,
+                    )
+                  ],
                 ),
               ],
             ),
-            Column(
-              children: [
-                LightButton(
-                  text: AppLocalizations.of(context)!.importMnemonic,
-                  onPressed: navigateToImport,
-                ),
-                SizedBox(height: 16),
-                LightButton(
-                  text: AppLocalizations.of(context)!.generateAccount,
-                  onPressed: navigateToGenerate,
-                )
-              ],
-            ),
-          ],
+          ),
         ),
       ),
     );

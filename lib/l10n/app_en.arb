@@ -1,4 +1,8 @@
 {
+  "appName": "Desmos Account Manager",
+  "@appName":{
+    "description": "Name of the app"
+  },
   "welcome": "Welcome to Desmos network",
   "@welcome": {
     "description": "The message used to greet the user inside the application"
@@ -56,7 +60,7 @@
   "@importMnemonicPageTitle": {
     "description": "Title of the page that will be used to import an existing mnemonic phrase"
   },
-  "importMnemonicBody": "Please enter your mnemonic phrase in order and make sure each word is written correctly",
+  "importMnemonicBody": "Please enter your mnemonic phrase in order and make sure each word is written correctly.",
   "@importMnemonicBody": {
     "description": "Text used to tell the user to insert their mnemonic phrase"
   },
@@ -67,5 +71,10 @@
   "mnemonicNotValidError": "Mnemonic is not valid",
   "@mnemonicNotValidError": {
     "description": "Error message that is shown to the user when the mnemonic is not valid"
+  },
+
+  "loading": "Loading...",
+  "@loading": {
+    "description": "Text used to indicate that something is loading"
   }
 }

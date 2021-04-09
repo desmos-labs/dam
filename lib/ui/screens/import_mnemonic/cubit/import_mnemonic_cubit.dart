@@ -14,11 +14,14 @@ class ImportMnemonicCubit extends Cubit<ImportMnemonicState> {
     if (currentState is ImportMnemonicState) {
       final words = Map<int, String>.from(currentState.mnemonicWords);
       words[index] = word;
-      emit(ImportMnemonicState(mnemonic: words));
+      emit(ImportMnemonicState(mnemonicWords: words, creatingAddress: false));
     }
   }
 
   String? getAddress() {
-    return DesmosWallet.getAddress(state.mnemonic);
+    emit(state.copy(creatingAddress: true));
+    final address = DesmosWallet.getAddress(state.mnemonic);
+    emit(state.copy(creatingAddress: false));
+    return address;
   }
 }

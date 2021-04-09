@@ -18,11 +18,23 @@ class ImportMnemonicPhrasePage extends StatelessWidget {
         child: Builder(
           builder: (context) {
             return SafeArea(
-              child: ImportMnemonicBody(
-                onWordChanged: (index, word) {
-                  return _onWordChanged(context, index, word);
-                },
-                onNext: () => _onNext(context),
+              child: Stack(
+                children: [
+                  ImportMnemonicBody(
+                    onWordChanged: (index, word) {
+                      _onWordChanged(context, index, word);
+                    },
+                    onNext: () => _onNext(context),
+                  ),
+                  BlocBuilder<ImportMnemonicCubit, ImportMnemonicState>(
+                    builder: (context, state) {
+                      return Visibility(
+                        visible: state.creatingAddress,
+                        child: LoadingBar(),
+                      );
+                    },
+                  ),
+                ],
               ),
             );
           },

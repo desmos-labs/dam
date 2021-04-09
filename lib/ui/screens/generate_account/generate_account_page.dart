@@ -19,14 +19,19 @@ class GenerateAccountPage extends StatelessWidget {
           child: BlocBuilder<GenerateAccountCubit, GenerateAccountState>(
             builder: (context, state) {
               if (state is GenerateAccountLoading) {
-                return Container();
+                return LoadingBar();
               }
 
               final generatedState = state as GenerateAccountLoaded;
-              return GeneratedAccountBody(
-                words: generatedState.mnemonic,
-                onRandomPressed: () => _getRandomMnemonic(context),
-                onGenerateAccountPressed: () => _generateAccount(context),
+              return Stack(
+                children: [
+                  GeneratedAccountBody(
+                    words: generatedState.mnemonic,
+                    onRandomPressed: () => _getRandomMnemonic(context),
+                    onGenerateAccountPressed: () => _generateAccount(context),
+                  ),
+                  if (generatedState.creatingAddress) LoadingBar(),
+                ],
               );
             },
           ),

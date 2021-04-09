@@ -17,11 +17,10 @@ class ImportMnemonicBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: DesmosPlatform.isMobile
-          ? EdgeInsets.only(left: 16, right: 16, bottom: 16)
-          : EdgeInsets.symmetric(horizontal: 360, vertical: 160),
+    return ContentContainer(
+      scrollable: true,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +56,6 @@ class ImportMnemonicBody extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: DesmosPlatform.isMobile ? 64 : 80),
           BlocBuilder<ImportMnemonicCubit, ImportMnemonicState>(
             builder: (context, state) {
               final disableNext = !state.has24Words || state.hasError;
