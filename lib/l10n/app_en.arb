@@ -1,13 +1,12 @@
 {
   "appName": "Desmos Account Manager",
-  "@appName":{
+  "@appName": {
     "description": "Name of the app"
   },
   "welcome": "Welcome to Desmos network",
   "@welcome": {
     "description": "The message used to greet the user inside the application"
   },
-
   "importMnemonic": "Import mnemonic phrase",
   "@importMnemonic": {
     "description": "Text of the button that allows the user to import a mnemonic phrase"
@@ -16,8 +15,6 @@
   "@generateAccount": {
     "description": "Text of the button that allows the user to generate an account"
   },
-
-
   "generateAccountPageTitle": "Generate an account",
   "@generateAccountPageTitle": {
     "description": "Title of the page used to generate a new account"
@@ -38,7 +35,6 @@
   "@random": {
     "description": "This text will be present inside the button that allows to generate a random mnemonic phrase"
   },
-
   "accountGenerated": "Desmos account has been generated successfully",
   "@accountGenerated": {
     "description": "Text shown to the user when they have generated the account properly"
@@ -55,7 +51,6 @@
   "@textCopied": {
     "description": "Message shown to the user when he copies a text inside the device clipboard"
   },
-
   "importMnemonicPageTitle": "Import mnemonic phrase",
   "@importMnemonicPageTitle": {
     "description": "Title of the page that will be used to import an existing mnemonic phrase"
@@ -72,7 +67,6 @@
   "@mnemonicNotValidError": {
     "description": "Error message that is shown to the user when the mnemonic is not valid"
   },
-
   "loading": "Loading...",
   "@loading": {
     "description": "Text used to indicate that something is loading"
