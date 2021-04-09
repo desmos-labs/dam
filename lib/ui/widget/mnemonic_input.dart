@@ -1,3 +1,4 @@
+import 'package:dam/ui/consts/platform.dart';
 import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
 
@@ -17,10 +18,12 @@ class MnemonicInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = DesmosPlatform.isMobile(context);
+    final isTablet = DesmosPlatform.isTablet(context);
     return GridView.count(
-      crossAxisCount: DesmosPlatform.isMobile ? 3 : 6,
-      crossAxisSpacing: DesmosPlatform.isMobile ? 16 : 24,
-      mainAxisSpacing: DesmosPlatform.isMobile ? 16 : 24,
+      crossAxisCount: isMobile ? 3 : (isTablet ? 4 : 6),
+      crossAxisSpacing: isMobile ? 16 : (isTablet ? 14 : 12),
+      mainAxisSpacing: isMobile ? 16 : (isTablet ? 14 : 12),
       childAspectRatio: 3,
       shrinkWrap: true,
       primary: false,

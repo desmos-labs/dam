@@ -18,11 +18,23 @@ class ImportMnemonicPhrasePage extends StatelessWidget {
         child: Builder(
           builder: (context) {
             return SafeArea(
-              child: ImportMnemonicBody(
-                onWordChanged: (index, word) {
-                  return _onWordChanged(context, index, word);
-                },
-                onNext: () => _onNext(context),
+              child: Stack(
+                children: [
+                  ImportMnemonicBody(
+                    onWordChanged: (index, word) {
+                      _onWordChanged(context, index, word);
+                    },
+                    onNext: () => _onNext(context),
+                  ),
+                  BlocBuilder<ImportMnemonicCubit, ImportMnemonicState>(
+                    builder: (context, state) {
+                      return Visibility(
+                        visible: state.creatingAddress,
+                        child: LoadingBar(),
+                      );
+                    },
+                  ),
+                ],
               ),
             );
           },
@@ -39,11 +51,6 @@ class ImportMnemonicPhrasePage extends StatelessWidget {
   /// Called when the user presses the "Next" button.
   void _onNext(BuildContext context) {
     final cubit = context.read<ImportMnemonicCubit>();
-    final address = cubit.getAddress();
-    if (address != null) {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return AccountGeneratedPage(address: address);
-      }));
-    }
+    cubit.generateAddress(context);
   }
 }

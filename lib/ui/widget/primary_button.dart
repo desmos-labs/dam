@@ -25,7 +25,7 @@ class PrimaryButton extends StatelessWidget {
               ),
             ),
             child: Container(
-              padding: DesmosPlatform.isMobile
+              padding: DesmosPlatform.isMobile(context)
                   ? EdgeInsets.zero
                   : EdgeInsets.symmetric(vertical: 10),
               child: Text(

@@ -13,7 +13,7 @@ class DesmosWallet {
   /// associated Bech32 address.
   /// If there is any error while generating the wallet, [Null] is returned
   /// instead.
-  static String? getAddress(List<String> mnemonic) {
+  static Future<String?> getAddress(List<String> mnemonic) async {
     try {
       final wallet = Wallet.derive(mnemonic, _info, derivationPath: _path);
       return wallet.bech32Address;

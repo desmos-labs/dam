@@ -23,7 +23,7 @@ class LightButton extends StatelessWidget {
               backgroundColor: MaterialStateProperty.all(Colors.white),
             ),
             child: Container(
-              padding: DesmosPlatform.isMobile
+              padding: DesmosPlatform.isMobile(context)
                   ? EdgeInsets.zero
                   : EdgeInsets.symmetric(vertical: 10),
               child: Text(

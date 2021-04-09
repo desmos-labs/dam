@@ -24,7 +24,7 @@ class MnemonicWordInput extends StatelessWidget {
       enabled: editable,
       maxLines: 1,
       textInputAction: TextInputAction.next,
-      controller: TextEditingController()..text = word ?? "",
+      controller: TextEditingController()..text = word ?? '',
       onChanged: (value) => onWordChanged?.call(index, value),
       decoration: InputDecoration(
         prefixIcon: Padding(

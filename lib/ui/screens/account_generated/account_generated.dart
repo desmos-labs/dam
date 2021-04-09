@@ -27,33 +27,32 @@ class AccountGeneratedPage extends StatelessWidget {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Container(
-          padding: DesmosPlatform.isMobile
-              ? EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 30)
-              : EdgeInsets.symmetric(horizontal: 360, vertical: 160),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/account-generated.png',
-                      width: DesmosPlatform.isMobile ? 280 : 560,
-                    ),
-                    SizedBox(height: 16),
-                    Text(
-                      AppLocalizations.of(context)!.accountGenerated,
-                      style: DesmosTextStyles.largeBody(context),
-                      textAlign: TextAlign.center,
-                    )
-                  ],
-                ),
+      body: ContentContainer(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Flexible(
+              flex: 5,
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/account-generated.png',
+                    width: DesmosPlatform.isMobile(context) ? 280 : 400,
+                  ),
+                  SizedBox(height: DesmosPlatform.isMobile(context) ? 16 : 24),
+                  Text(
+                    AppLocalizations.of(context)!.accountGenerated,
+                    style: DesmosTextStyles.largeBody(context),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-              Column(
+            ),
+            Flexible(
+              flex: 2,
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
                     AppLocalizations.of(context)!.desmosAddress,
@@ -61,15 +60,15 @@ class AccountGeneratedPage extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   DesmosAddressViewer(address: address),
-                  SizedBox(height: 24),
+                  SizedBox(height: 8),
                   PrimaryButton(
                     text: AppLocalizations.of(context)!.copy,
                     onPressed: () => _onCopyPressed(context),
                   ),
                 ],
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
         ),
       ),
     );

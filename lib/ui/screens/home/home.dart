@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
 
@@ -11,7 +9,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DesmosPlatform.isMobile
+      body: DesmosPlatform.isMobile(context)
           ? MobileContent(
               navigateToGenerate: () => _navigateToGenerator(context),
               navigateToImport: () => _navigateToImportMnemonic(context),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class DesmosColors {
-
   // TODO: Change other colors
   static const MaterialColor orange = MaterialColor(
     _desmosPrimaryValue,

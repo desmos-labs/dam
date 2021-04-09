@@ -14,7 +14,7 @@ class DesmosTextStyles {
   static TextStyle thinHeader(BuildContext context) {
     return Theme.of(context).textTheme.bodyText1!.copyWith(
           color: Colors.white,
-          fontSize: DesmosPlatform.isMobile ? 18 : 24,
+          fontSize: DesmosPlatform.isMobile(context) ? 18 : 24,
           fontWeight: FontWeight.w400,
         );
   }
@@ -22,7 +22,7 @@ class DesmosTextStyles {
   static TextStyle largeBody(BuildContext context) {
     return Theme.of(context).textTheme.bodyText1!.copyWith(
           color: Colors.black,
-          fontSize: DesmosPlatform.isMobile ? 16 : 20,
+          fontSize: DesmosPlatform.isMobile(context) ? 16 : 20,
           fontWeight: FontWeight.w400,
         );
   }
