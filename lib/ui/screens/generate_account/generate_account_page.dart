@@ -47,11 +47,6 @@ class GenerateAccountPage extends StatelessWidget {
   /// Method called when the user presses the "Generate account" button.
   void _generateAccount(BuildContext context) {
     final cubit = context.read<GenerateAccountCubit>();
-    final address = cubit.getAddress();
-    if (address != null) {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return AccountGeneratedPage(address: address);
-      }));
-    }
+    cubit.generateAddress(context);
   }
 }

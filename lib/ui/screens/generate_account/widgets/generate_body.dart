@@ -60,6 +60,7 @@ class GeneratedAccountBody extends StatelessWidget {
               ),
             ],
           ),
+          if (DesmosPlatform.isMobile(context)) SizedBox(height: 32),
           PrimaryButton(
             text: AppLocalizations.of(context)!.generateAccount,
             onPressed: onGenerateAccountPressed,

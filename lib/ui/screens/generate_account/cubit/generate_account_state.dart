@@ -26,9 +26,6 @@ class GenerateAccountLoaded extends GenerateAccountState {
     return GenerateAccountLoaded(creatingAddress: false, mnemonic: mnemonic);
   }
 
-  @override
-  List<Object> get props => [creatingAddress, mnemonic];
-
   GenerateAccountLoaded copy({
     bool? creatingAddress,
     List<String>? mnemonic,
@@ -38,4 +35,7 @@ class GenerateAccountLoaded extends GenerateAccountState {
       mnemonic: mnemonic ?? this.mnemonic,
     );
   }
+
+  @override
+  List<Object> get props => [creatingAddress, mnemonic];
 }

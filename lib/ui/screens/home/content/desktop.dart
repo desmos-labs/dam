@@ -1,7 +1,6 @@
 import 'package:dam/ui/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 /// Content of the Home screen to be shown inside the web and dekstop
 /// versions of the app.
@@ -29,7 +28,7 @@ class DesktopContent extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset('assets/desmos-icon.svg', width: 200),
+            Image.asset('assets/desmos-icon.png', width: 200),
             SizedBox(height: 30),
             Text(
               AppLocalizations.of(context)!.welcome,

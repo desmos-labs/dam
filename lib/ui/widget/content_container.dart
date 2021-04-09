@@ -14,34 +14,22 @@ import 'package:dam/ui/export.dart';
 /// padding of 16 and [DesmosSizes.desktopConstraints] constraints.
 class ContentContainer extends StatelessWidget {
   final Widget child;
-  final bool scrollable;
 
   const ContentContainer({
     Key? key,
     required this.child,
-    this.scrollable = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final screen = MediaQuery.of(context).size;
 
-    if (!DesmosPlatform.isDesktop) {
-      final query = MediaQuery.of(context);
-      final height = query.size.height - kToolbarHeight - 25 - 32;
+    if (DesmosPlatform.isMobile(context)) {
       final padding = EdgeInsets.all(16);
-      return scrollable
-          ? SingleChildScrollView(
-              padding: padding,
-              child: SizedBox(
-                height: height,
-                child: child,
-              ),
-            )
-          : Container(
-              padding: padding,
-              child: child,
-            );
+      return SingleChildScrollView(
+        padding: padding,
+        child: child,
+      );
     }
 
     return Row(

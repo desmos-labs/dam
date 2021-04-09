@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dam/ui/export.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -19,11 +18,7 @@ class ReloadButton extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.asset(
-            'assets/icon-reload.svg',
-            height: 12,
-            width: 12,
-          ),
+          Image.asset('assets/icon-reload.png', width: 12),
           SizedBox(width: 6),
           Text(
             AppLocalizations.of(context)!.random,

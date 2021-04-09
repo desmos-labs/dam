@@ -1,10 +1,10 @@
 {
   "appName": "Desmos Account Manager",
-  "welcome": "Benvenuti su Desmos network",
+  "welcome": "Benvenuti su Desmos",
   "importMnemonic": "Importa account",
   "generateAccount": "Genera account",
   "generateAccountPageTitle": "Genera un account",
-  "writeSaveMnemonic": "Ricoardati di scrivere la mnemonic phrase su un pezzo di carta.",
+  "writeSaveMnemonic": "Ricordati di scrivere la mnemonic phrase su un pezzo di carta.",
   "onlyWayRestore": "E' l'%s di ripristinare l'account.",
   "onlyWay": "unico modo",
   "random": "Casuale",

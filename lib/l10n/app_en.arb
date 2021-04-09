@@ -3,7 +3,7 @@
   "@appName": {
     "description": "Name of the app"
   },
-  "welcome": "Welcome to Desmos network",
+  "welcome": "Welcome to Desmos",
   "@welcome": {
     "description": "The message used to greet the user inside the application"
   },

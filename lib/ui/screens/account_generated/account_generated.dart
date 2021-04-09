@@ -37,9 +37,9 @@ class AccountGeneratedPage extends StatelessWidget {
                 children: [
                   Image.asset(
                     'assets/account-generated.png',
-                    width: DesmosPlatform.isMobile(context) ? 280 : 500,
+                    width: DesmosPlatform.isMobile(context) ? 280 : 400,
                   ),
-                  SizedBox(height: 16),
+                  SizedBox(height: DesmosPlatform.isMobile(context) ? 16 : 24),
                   Text(
                     AppLocalizations.of(context)!.accountGenerated,
                     style: DesmosTextStyles.largeBody(context),

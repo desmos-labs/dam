@@ -1,7 +1,9 @@
 import 'package:alan/alan.dart';
 import 'package:bloc/bloc.dart';
+import 'package:dam/ui/export.dart';
 import 'package:dam/wallet/desmos_wallet.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/widgets.dart';
 
 part 'generate_account_state.dart';
 
@@ -15,13 +17,15 @@ class GenerateAccountCubit extends Cubit<GenerateAccountState> {
     emit(GenerateAccountLoaded.initial(mnemonic));
   }
 
-  String? getAddress() {
+  void generateAddress(BuildContext context) {
     final currentState = state;
     if (currentState is GenerateAccountLoaded) {
       emit(currentState.copy(creatingAddress: true));
-      final address = DesmosWallet.getAddress(currentState.mnemonic);
-      emit(currentState.copy(creatingAddress: false));
-      return address;
+
+      DesmosWallet.getAddress(currentState.mnemonic).then((address) {
+        if (address == null) return;
+        DesmosRoutes.navigateToGeneratedAddress(context, address);
+      });
     }
 
     return null;

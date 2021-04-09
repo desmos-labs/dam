@@ -51,11 +51,6 @@ class ImportMnemonicPhrasePage extends StatelessWidget {
   /// Called when the user presses the "Next" button.
   void _onNext(BuildContext context) {
     final cubit = context.read<ImportMnemonicCubit>();
-    final address = cubit.getAddress();
-    if (address != null) {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return AccountGeneratedPage(address: address);
-      }));
-    }
+    cubit.generateAddress(context);
   }
 }

@@ -1,7 +1,9 @@
 import 'package:alan/alan.dart';
 import 'package:bloc/bloc.dart';
+import 'package:dam/ui/export.dart';
 import 'package:equatable/equatable.dart';
 import 'package:dam/wallet/export.dart';
+import 'package:flutter/cupertino.dart';
 
 part 'import_mnemonic_state.dart';
 
@@ -18,10 +20,11 @@ class ImportMnemonicCubit extends Cubit<ImportMnemonicState> {
     }
   }
 
-  String? getAddress() {
+  void generateAddress(BuildContext context) {
     emit(state.copy(creatingAddress: true));
-    final address = DesmosWallet.getAddress(state.mnemonic);
-    emit(state.copy(creatingAddress: false));
-    return address;
+    DesmosWallet.getAddress(state.mnemonic).then((address) {
+      if (address == null) return;
+      DesmosRoutes.navigateToGeneratedAddress(context, address);
+    });
   }
 }
