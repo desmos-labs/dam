@@ -45,14 +45,14 @@ class MobileContent extends StatelessWidget {
                 Column(
                   children: [
                     LightButton(
-                      text: AppLocalizations.of(context)!.importMnemonic,
-                      onPressed: navigateToImport,
+                      text: AppLocalizations.of(context)!.generateAccount,
+                      onPressed: navigateToGenerate,
                     ),
                     SizedBox(height: 16),
                     LightButton(
-                      text: AppLocalizations.of(context)!.generateAccount,
-                      onPressed: navigateToGenerate,
-                    )
+                      text: AppLocalizations.of(context)!.importMnemonic,
+                      onPressed: navigateToImport,
+                    ),
                   ],
                 ),
               ],
