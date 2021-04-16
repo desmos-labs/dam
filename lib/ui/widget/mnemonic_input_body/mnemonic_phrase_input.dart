@@ -2,14 +2,16 @@ import 'package:dam/ui/consts/platform.dart';
 import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
 
+import 'mnemonic_word_input.dart';
+
 /// Represents the overall mnemonic input that allows the user to insert a 24
 /// words seed phrase.
-class MnemonicInput extends StatelessWidget {
+class MnemonicPhraseInput extends StatelessWidget {
   final bool editable;
   final List<String> words;
   final void Function(int index, String word)? onWordChanged;
 
-  const MnemonicInput({
+  const MnemonicPhraseInput({
     Key? key,
     this.editable = false,
     this.words = const [],

@@ -28,6 +28,7 @@ class LightButton extends StatelessWidget {
                   : EdgeInsets.symmetric(vertical: 10),
               child: Text(
                 text,
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.button!.copyWith(
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.w400,

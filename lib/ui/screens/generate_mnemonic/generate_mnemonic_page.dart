@@ -3,32 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'widgets/export.dart';
-import 'cubit/export.dart';
+import 'bloc/export.dart';
 
 /// This page is shown to the user when they navigate here from the main screen.
 /// It is used to generate a new Desmos account data and let them copy the
 /// output values (address, mnemonic, etc).
-class GenerateAccountPage extends StatelessWidget {
+class GenerateMnemonicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: BlocProvider(
-        create: (context) => GenerateAccountCubit()..random(),
+        create: (context) => GenerateMnemonicBloc()..add(GenerateNewMnemonic()),
         child: SafeArea(
-          child: BlocBuilder<GenerateAccountCubit, GenerateAccountState>(
+          child: BlocBuilder<GenerateMnemonicBloc, GenerateMnemonicState>(
             builder: (context, state) {
-              if (state is GenerateAccountLoading) {
+              if (state is GenerateMnemonicLoading) {
                 return LoadingBar();
               }
 
-              final generatedState = state as GenerateAccountLoaded;
+              final generatedState = state as GenerateMnemonicLoaded;
               return Stack(
                 children: [
                   GeneratedAccountBody(
                     words: generatedState.mnemonic,
-                    onRandomPressed: () => _getRandomMnemonic(context),
-                    onGenerateAccountPressed: () => _generateAccount(context),
+                    onNext: (mnemonic) => _onNext(context, mnemonic),
                   ),
                   if (generatedState.creatingAddress) LoadingBar(),
                 ],
@@ -40,13 +39,9 @@ class GenerateAccountPage extends StatelessWidget {
     );
   }
 
-  void _getRandomMnemonic(BuildContext context) {
-    context.read<GenerateAccountCubit>().random();
-  }
-
-  /// Method called when the user presses the "Generate account" button.
-  void _generateAccount(BuildContext context) {
-    final cubit = context.read<GenerateAccountCubit>();
-    cubit.generateAddress(context);
+  void _onNext(BuildContext context, List<String> mnemonic) {
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+      return VerifyMnemonicPage(mnemonic: mnemonic);
+    }));
   }
 }

@@ -1,6 +1,5 @@
 import 'package:dam/ui/export.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 /// Content of the Home screen to be shown inside the web and dekstop
 /// versions of the app.
@@ -34,11 +33,17 @@ class DesktopContent extends StatelessWidget {
               AppLocalizations.of(context)!.welcome,
               style: DesmosTextStyles.thinHeader(context),
             ),
-            SizedBox(height: 80),
             SizedBox(
               width: 325,
               child: Column(
                 children: [
+                  SizedBox(height: 16),
+                  Text(
+                    AppLocalizations.of(context)!.networkTip,
+                    textAlign: TextAlign.center,
+                    style: DesmosTextStyles.thinSubHeader(context),
+                  ),
+                  SizedBox(height: 80),
                   LightButton(
                     text: AppLocalizations.of(context)!.generateAccount,
                     onPressed: navigateToGenerate,

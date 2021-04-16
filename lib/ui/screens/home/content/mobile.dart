@@ -1,6 +1,5 @@
 import 'package:dam/ui/export.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 /// Home content for the mobile devices.
 class MobileContent extends StatelessWidget {
@@ -38,6 +37,12 @@ class MobileContent extends StatelessWidget {
                     Text(
                       AppLocalizations.of(context)!.welcome,
                       style: DesmosTextStyles.thinHeader(context),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      AppLocalizations.of(context)!.networkTip,
+                      style: DesmosTextStyles.thinSubHeader(context),
+                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),

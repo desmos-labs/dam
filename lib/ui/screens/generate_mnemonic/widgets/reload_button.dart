@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 /// Represents a reload button.
 class ReloadButton extends StatelessWidget {

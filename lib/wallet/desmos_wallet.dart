@@ -9,6 +9,10 @@ class DesmosWallet {
     fullNodeHost: 'localhost',
   );
 
+  static Future<List<String>> generateMnemonic() async {
+    return Bip39.generateMnemonic(strength: 256);
+  }
+
   /// Generates a new wallet from the given mnemonic phrase, and returns the
   /// associated Bech32 address.
   /// If there is any error while generating the wallet, [Null] is returned

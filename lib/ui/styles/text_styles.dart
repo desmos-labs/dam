@@ -6,7 +6,7 @@ class DesmosTextStyles {
   static TextStyle title(BuildContext context) {
     return Theme.of(context).textTheme.bodyText1!.copyWith(
           color: Colors.black,
-          fontSize: 20,
+          fontSize: 22,
           fontWeight: FontWeight.w500,
         );
   }
@@ -15,6 +15,14 @@ class DesmosTextStyles {
     return Theme.of(context).textTheme.bodyText1!.copyWith(
           color: Colors.white,
           fontSize: DesmosPlatform.isMobile(context) ? 18 : 24,
+          fontWeight: FontWeight.w400,
+        );
+  }
+
+  static TextStyle thinSubHeader(BuildContext context) {
+    return Theme.of(context).textTheme.bodyText1!.copyWith(
+          color: Colors.white,
+          fontSize: DesmosPlatform.isMobile(context) ? 14 : 18,
           fontWeight: FontWeight.w400,
         );
   }
@@ -56,6 +64,14 @@ class DesmosTextStyles {
           color: Colors.black,
           fontSize: 14,
           fontWeight: FontWeight.w500,
+        );
+  }
+
+  static TextStyle warningBody(BuildContext context) {
+    return Theme.of(context).textTheme.bodyText1!.copyWith(
+          color: Colors.black,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
         );
   }
 

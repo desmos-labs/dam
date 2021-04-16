@@ -1,10 +1,16 @@
-import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
+import 'package:flutter/material.dart';
 
-/// Page that is shown to the user when they want to import an already existing
-/// mnemonic phrase. It allows to insert the 24 words and then generate the
-/// account from those.
-class ImportMnemonicPage extends StatelessWidget {
+/// Page that requires the user to insert the given [mnemonic] to make sure
+/// they have written it down on a piece of paper.
+class VerifyMnemonicPage extends StatelessWidget {
+  final List<String> mnemonic;
+
+  const VerifyMnemonicPage({
+    Key? key,
+    required this.mnemonic,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,12 +19,18 @@ class ImportMnemonicPage extends StatelessWidget {
         child: Stack(
           children: [
             MnemonicInputBody(
+              mnemonicCheck: mnemonic,
               texts: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    AppLocalizations.of(context)!.importMnemonicPageTitle,
+                    AppLocalizations.of(context)!.verifyMnemonicPageTitle,
                     style: DesmosTextStyles.title(context),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    AppLocalizations.of(context)!.verifyMnemonicPageBody,
+                    style: DesmosTextStyles.thinBodyGrey(context),
                   ),
                   SizedBox(height: 8),
                 ],
@@ -34,8 +46,5 @@ class ImportMnemonicPage extends StatelessWidget {
   }
 
   /// Called when the user presses the "Next" button.
-  void _onNext(BuildContext context, List<String> words, int accountsNumber) {
-    print(words);
-    print(accountsNumber);
-  }
+  void _onNext(BuildContext context, List<String> words, int accountsNumber) {}
 }
