@@ -1,11 +1,14 @@
+import 'package:dam/wallet/export.dart';
 import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
 
 class DesmosAddressViewer extends StatelessWidget {
+  final int index;
   final String address;
 
   const DesmosAddressViewer({
     Key? key,
+    required this.index,
     required this.address,
   }) : super(key: key);
 
@@ -20,9 +23,18 @@ class DesmosAddressViewer extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
-          Text(
-            address,
-            style: DesmosTextStyles.thinBodyBlack(context),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '${AppLocalizations.of(context)!.path}: ${DesmosWallet.getPath(index)}',
+                style: DesmosTextStyles.thinBodyBlack(context),
+              ),
+              Text(
+                '${AppLocalizations.of(context)!.address}: $address',
+                style: DesmosTextStyles.thinBodyBlack(context),
+              ),
+            ],
           ),
         ],
       ),

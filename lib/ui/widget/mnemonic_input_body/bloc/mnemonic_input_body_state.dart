@@ -36,7 +36,6 @@ class MnemonicInputBodyState extends Equatable {
   /// match the provided [mnemonicCheck].
   bool get hasError {
     if (mnemonicCheck != null) {
-      print(mnemonicCheck);
       var deepEq = const ListEquality().equals;
       return !deepEq(mnemonic, mnemonicCheck);
     }

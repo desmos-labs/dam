@@ -112,7 +112,7 @@ class MnemonicInputBody extends StatelessWidget {
           child: SpinBox(
             min: 1,
             value: 1,
-            max: 5,
+            max: 3,
             decimals: 0,
             step: 1,
             enableInteractiveSelection: false,
@@ -133,7 +133,6 @@ class MnemonicInputBody extends StatelessWidget {
 
     return TextButton(
       onPressed: () {
-        print("Using debug mnemonic");
         final bloc = BlocProvider.of<MnemonicInputBodyBloc>(context);
         final words = [
           "city",

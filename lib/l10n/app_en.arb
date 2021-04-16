@@ -91,9 +91,17 @@
   "@desmosAddress": {
     "description": "Label used to describe the Desmos address output"
   },
-  "copy": "Copy",
+  "path": "Path",
+  "@path": {
+    "description": "Label associated with each path of an address"
+  },
+  "address": "Address",
+  "@address": {
+    "description": "Label associated with each address"
+  },
+  "copyAddresses": "Copy addresses",
   "@copy": {
-    "description": "Label of a button allowing to copy something"
+    "description": "Label of the button allowing to copy the addresses"
   },
   "textCopied": "Text copied inside the clipboard",
   "@textCopied": {

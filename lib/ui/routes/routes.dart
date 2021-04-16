@@ -3,10 +3,17 @@ import 'package:flutter/material.dart';
 
 /// Collects the most used routes of the application.
 class DesmosRoutes {
-  /// Navigates to the generated address screen to display the given [address].
-  static void navigateToGeneratedAddress(BuildContext context, String address) {
+  /// Navigates to the address generation screen.
+  static void navigateToGeneratedAddress(
+    BuildContext context,
+    int accountsToGenerate,
+    List<String> mnemonic,
+  ) {
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-      return AccountGeneratedPage(address: address);
+      return GenerateAccountPage(
+        accountsNumber: accountsToGenerate,
+        mnemonic: mnemonic,
+      );
     }));
   }
 }

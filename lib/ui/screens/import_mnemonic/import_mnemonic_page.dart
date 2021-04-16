@@ -23,8 +23,9 @@ class ImportMnemonicPage extends StatelessWidget {
                   SizedBox(height: 8),
                 ],
               ),
-              onNext: (words, accountsNumber) =>
-                  _onNext(context, words, accountsNumber),
+              onNext: (words, accountsNumber) {
+                _onNext(context, words, accountsNumber);
+              },
             )
             // LoadingBar(),
           ],
@@ -35,7 +36,6 @@ class ImportMnemonicPage extends StatelessWidget {
 
   /// Called when the user presses the "Next" button.
   void _onNext(BuildContext context, List<String> words, int accountsNumber) {
-    print(words);
-    print(accountsNumber);
+    DesmosRoutes.navigateToGeneratedAddress(context, accountsNumber, words);
   }
 }
