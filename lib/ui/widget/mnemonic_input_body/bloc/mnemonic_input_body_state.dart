@@ -1,6 +1,6 @@
-import 'package:equatable/equatable.dart';
 import 'package:alan/alan.dart';
 import 'package:collection/collection.dart';
+import 'package:equatable/equatable.dart';
 
 /// State of the "Import mnemonic" page.
 ///
@@ -12,6 +12,9 @@ class MnemonicInputBodyState extends Equatable {
   final bool creatingAddress;
   final Map<int, String> mnemonicWords;
   final int accountsNumber;
+
+  /// Tells whether the page is loading or not
+  final bool loading;
 
   /// Returns the list of mnemonic words that have been entered till now.
   List<String> get mnemonic {
@@ -48,6 +51,7 @@ class MnemonicInputBodyState extends Equatable {
     required this.mnemonicWords,
     required this.creatingAddress,
     required this.accountsNumber,
+    required this.loading,
   });
 
   factory MnemonicInputBodyState.initial(List<String>? mnemonicCheck) {
@@ -56,6 +60,7 @@ class MnemonicInputBodyState extends Equatable {
       mnemonicWords: {},
       creatingAddress: false,
       accountsNumber: 1,
+      loading: false,
     );
   }
 
@@ -63,12 +68,14 @@ class MnemonicInputBodyState extends Equatable {
     Map<int, String>? mnemonicWords,
     bool? creatingAddress,
     int? accountsNumber,
+    bool? loading,
   }) {
     return MnemonicInputBodyState(
       mnemonicCheck: mnemonicCheck,
       mnemonicWords: mnemonicWords ?? this.mnemonicWords,
       creatingAddress: creatingAddress ?? this.creatingAddress,
       accountsNumber: accountsNumber ?? this.accountsNumber,
+      loading: loading ?? this.loading,
     );
   }
 
@@ -78,5 +85,6 @@ class MnemonicInputBodyState extends Equatable {
         mnemonicWords,
         creatingAddress,
         accountsNumber,
+        loading,
       ];
 }

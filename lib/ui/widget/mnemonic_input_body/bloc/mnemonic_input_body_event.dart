@@ -28,3 +28,7 @@ class ChangeAccountsNumber extends MnemonicInputBodyEvent {
   @override
   List<Object?> get props => [number];
 }
+
+/// Represents the event that is emitted when we should start visualizing the
+/// loading bar.
+class ShowsLoadingBar extends MnemonicInputBodyEvent {}

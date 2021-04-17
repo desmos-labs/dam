@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinbox/flutter_spinbox.dart';
 
 import 'bloc/export.dart';
-import 'mnemonic_phrase_input.dart';
+import 'widgets/export.dart';
 
 /// Represents the widget that should be used inside a page that allows to
 /// input a mnemonic phrase.
@@ -39,25 +39,38 @@ class MnemonicInputBody extends StatelessWidget {
       create: (context) => MnemonicInputBodyBloc(mnemonicCheck),
       child: Builder(
         builder: (context) {
-          return ContentContainer(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          return Stack(
+            children: [
+              ContentContainer(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    texts ?? Container(),
-                    _textBody(context),
-                    _mnemonicPhraseInput(context),
-                    _errorText(context),
-                    _accountsNumber(context),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        texts ?? Container(),
+                        _textBody(context),
+                        _mnemonicPhraseInput(context),
+                        _errorText(context),
+                        _accountsNumber(context),
+                      ],
+                    ),
+                    if (DesmosPlatform.isMobile(context)) SizedBox(height: 32),
+                    _testButton(context),
+                    _nextButton(context),
                   ],
                 ),
-                if (DesmosPlatform.isMobile(context)) SizedBox(height: 32),
-                _testButton(context),
-                _nextButton(context),
-              ],
-            ),
+              ),
+              BlocBuilder<MnemonicInputBodyBloc, MnemonicInputBodyState>(
+                builder: (context, state) {
+                  if (state.loading) {
+                    return LoadingPage();
+                  }
+
+                  return Container();
+                },
+              ),
+            ],
           );
         },
       ),
@@ -193,7 +206,10 @@ class MnemonicInputBody extends StatelessWidget {
 
   /// Called when the user presses the next button
   void _onNext(BuildContext context) {
-    final state = BlocProvider.of<MnemonicInputBodyBloc>(context).state;
-    onNext(state.mnemonic, state.accountsNumber);
+    final bloc = BlocProvider.of<MnemonicInputBodyBloc>(context);
+    bloc.add(ShowsLoadingBar());
+    Future.delayed(Duration(milliseconds: 500), () {
+      onNext(bloc.state.mnemonic, bloc.state.accountsNumber);
+    });
   }
 }

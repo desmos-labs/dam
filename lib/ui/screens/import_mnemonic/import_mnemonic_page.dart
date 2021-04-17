@@ -10,25 +10,20 @@ class ImportMnemonicPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
-        child: Stack(
-          children: [
-            MnemonicInputBody(
-              texts: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.importMnemonicPageTitle,
-                    style: DesmosTextStyles.title(context),
-                  ),
-                  SizedBox(height: 8),
-                ],
+        child: MnemonicInputBody(
+          texts: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                AppLocalizations.of(context)!.importMnemonicPageTitle,
+                style: DesmosTextStyles.title(context),
               ),
-              onNext: (words, accountsNumber) {
-                _onNext(context, words, accountsNumber);
-              },
-            )
-            // LoadingBar(),
-          ],
+              SizedBox(height: 8),
+            ],
+          ),
+          onNext: (words, accountsNumber) {
+            _onNext(context, words, accountsNumber);
+          },
         ),
       ),
     );

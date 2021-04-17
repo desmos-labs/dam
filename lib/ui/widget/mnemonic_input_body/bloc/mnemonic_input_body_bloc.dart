@@ -18,6 +18,8 @@ class MnemonicInputBodyBloc
       yield* _mapWordChangedToState(e);
     } else if (e is ChangeAccountsNumber) {
       yield* _mapChangeAccountsNumberToState(e);
+    } else if (e is ShowsLoadingBar) {
+      yield* _mapStartLoadingToState();
     }
   }
 
@@ -34,5 +36,9 @@ class MnemonicInputBodyBloc
     ChangeAccountsNumber e,
   ) async* {
     yield state.copy(accountsNumber: e.number);
+  }
+
+  Stream<MnemonicInputBodyState> _mapStartLoadingToState() async* {
+    yield state.copy(loading: true);
   }
 }

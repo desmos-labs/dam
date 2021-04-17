@@ -79,6 +79,18 @@
   "@accountsToBeGeneratedText": {
     "description": "Text used to describe the field that allows the user to tell how many addresses to generate from the mnemonic phrase"
   },
+  "generatingAccountsTitle": "Generating Desmos addresses",
+  "@generatingAccountsTitle": {
+    "description": "Title of the loading page telling the user the accounts are being generated"
+  },
+  "generatingAccountsBody": "The Desmos addresses are being generated. This might take a while...",
+  "@generatingAccountsBody": {
+    "description": "Text used to tell the user the accounts are being generated"
+  },
+  "doNotClosePage": "Please do not close the page",
+  "@doNotClosePage": {
+    "description": "Text used to tell the user to not close the page"
+  },
   "loading": "Loading...",
   "@loading": {
     "description": "Text used to indicate that something is loading"
