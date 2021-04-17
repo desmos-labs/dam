@@ -55,7 +55,7 @@ class GenerateMnemonicBloc
   ) async* {
     final currentState = state;
     if (currentState is GenerateMnemonicLoaded) {
-      yield currentState.copy(termsAccepted: e.value);
+      yield currentState.copy(termsAccepted: !currentState.termsAccepted);
     }
   }
 }

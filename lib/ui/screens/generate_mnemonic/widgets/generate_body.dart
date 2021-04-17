@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/export.dart';
@@ -132,11 +133,17 @@ class GeneratedAccountBody extends StatelessWidget {
         children: [
           Checkbox(
             value: currentState.termsAccepted,
-            onChanged: (value) => _updateCheckBoxValue(context, value ?? false),
+            onChanged: (value) => _updateCheckBoxValue(context),
           ),
-          Text(
-            AppLocalizations.of(context)!.iHaveWrittenTheWords,
-            style: DesmosTextStyles.warningBody(context),
+          MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTap: () => _updateCheckBoxValue(context),
+              child: Text(
+                AppLocalizations.of(context)!.iHaveWrittenTheWords,
+                style: DesmosTextStyles.warningBody(context),
+              ),
+            ),
           ),
         ],
       );
@@ -148,9 +155,9 @@ class GeneratedAccountBody extends StatelessWidget {
   }
 
   /// Called each time that the checkbox value is updated
-  void _updateCheckBoxValue(BuildContext context, bool value) {
+  void _updateCheckBoxValue(BuildContext context) {
     BlocProvider.of<GenerateMnemonicBloc>(context)
-        .add(UpdateMnemonicCheckboxValue(value));
+        .add(UpdateMnemonicCheckboxValue());
   }
 
   /// Called when the user presses the "Next" button

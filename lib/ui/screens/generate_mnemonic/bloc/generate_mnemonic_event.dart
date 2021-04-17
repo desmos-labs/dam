@@ -13,10 +13,5 @@ class GenerateNewMnemonic extends GenerateMnemonicEvent {}
 /// the checkbox that asks them to confirm they have written down the
 /// mnemonic phrase
 class UpdateMnemonicCheckboxValue extends GenerateMnemonicEvent {
-  final bool value;
-
-  UpdateMnemonicCheckboxValue(this.value);
-
-  @override
-  List<Object> get props => [value];
+  UpdateMnemonicCheckboxValue();
 }
