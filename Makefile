@@ -14,7 +14,7 @@ generate-lib:
 	mv -f target/i686-linux-android/debug/libwallet_ffi.so packages/wallet/android/src/main/jniLibs/x86/
 
 build-docker:
-	flutter build web
+	flutter build web --release
 	docker build --build-arg UID=$(shell id -u) --build-arg GID=$(shell id -g) -f ./Dockerfile --tag desmoslabs/dam build/web
 
 .PHONY: lint format generate-lib build-docke

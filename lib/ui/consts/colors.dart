@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 
 class DesmosColors {
-  // TODO: Change other colors
   static const MaterialColor orange = MaterialColor(
     _desmosPrimaryValue,
     <int, Color>{
-      50: Color(0xFFFCE4EC),
-      100: Color(0xFFF8BBD0),
-      200: Color(0xFFF48FB1),
-      300: Color(0xFFF06292),
-      400: Color(0xFFEC407A),
+      50: Color(0xFFfdedea),
+      100: Color(0xFFfad3cb),
+      200: Color(0xFFf6b6a9),
+      300: Color(0xFFf29887),
+      400: Color(0xFFf0826d),
       500: Color(_desmosPrimaryValue),
-      600: Color(0xFFD81B60),
-      700: Color(0xFFC2185B),
-      800: Color(0xFFAD1457),
-      900: Color(0xFF880E4F),
+      600: Color(0xFFeb644c),
+      700: Color(0xFFe85942),
+      800: Color(0xFFe54f39),
+      900: Color(0xFFe03d29),
     },
   );
 

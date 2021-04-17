@@ -25,12 +25,17 @@ class DesmosPlatform {
     return false;
   }
 
-  /// Returns [true] iff the application is running on a desktop computer.
+  /// Returns `true` iff the application is running on a desktop computer.
   static bool get isDesktop {
     if (kIsWeb) {
       return false;
     } else {
       return Platform.isLinux || Platform.isMacOS || Platform.isWindows;
     }
+  }
+
+  /// Returns `true` iff the application is running on a web platform.
+  static bool get isWeb {
+    return kIsWeb;
   }
 }

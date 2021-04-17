@@ -1,1 +1,1 @@
-export 'generate_body.dart';
+export 'account_generated_body.dart';

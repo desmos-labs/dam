@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -14,6 +13,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: DesmosColors.orange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         scaffoldBackgroundColor: Colors.white,
+        pageTransitionsTheme: NoTransitionsOnWeb(),
         appBarTheme: AppBarTheme(
           elevation: 0,
           backgroundColor: Colors.transparent,

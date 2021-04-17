@@ -28,8 +28,10 @@ class PrimaryButton extends StatelessWidget {
               padding: DesmosPlatform.isMobile(context)
                   ? EdgeInsets.zero
                   : EdgeInsets.symmetric(vertical: 10),
+              alignment: Alignment.center,
               child: Text(
                 text,
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.button?.copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.w400,

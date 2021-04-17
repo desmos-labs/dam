@@ -23,13 +23,13 @@ class HomePage extends StatelessWidget {
 
   void _navigateToGenerator(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return GenerateAccountPage();
+      return GenerateMnemonicPage();
     }));
   }
 
   void _navigateToImportMnemonic(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return ImportMnemonicPhrasePage();
+      return ImportMnemonicPage();
     }));
   }
 }

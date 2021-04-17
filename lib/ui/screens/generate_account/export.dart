@@ -1,1 +1,1 @@
-export 'generate_account_page.dart';
+export 'account_generated.dart';
