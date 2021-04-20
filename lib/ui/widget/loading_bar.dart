@@ -6,6 +6,7 @@ class LoadingBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16),
       color: Colors.white.withAlpha(200),
       child: Center(
         child: Column(

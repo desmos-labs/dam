@@ -23,14 +23,9 @@ class GenerateMnemonicPage extends StatelessWidget {
               }
 
               final generatedState = state as GenerateMnemonicLoaded;
-              return Stack(
-                children: [
-                  GeneratedAccountBody(
-                    words: generatedState.mnemonic,
-                    onNext: (mnemonic) => _onNext(context, mnemonic),
-                  ),
-                  if (generatedState.creatingAddress) LoadingBar(),
-                ],
+              return GeneratedAccountBody(
+                words: generatedState.mnemonic,
+                onNext: (mnemonic) => _onNext(context, mnemonic),
               );
             },
           ),

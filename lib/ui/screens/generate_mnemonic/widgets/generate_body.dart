@@ -37,8 +37,7 @@ class GeneratedAccountBody extends StatelessWidget {
     ];
 
     return ContentContainer(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: ListView(
         children: [
           Column(
             mainAxisSize: MainAxisSize.min,
@@ -73,7 +72,7 @@ class GeneratedAccountBody extends StatelessWidget {
               ]),
             ],
           ),
-          if (DesmosPlatform.isMobile(context)) SizedBox(height: 32),
+          SizedBox(height: DesmosPlatform.isMobile(context) ? 32 : 16),
           confirmWriteDownCheckBox(context),
           BlocBuilder<GenerateMnemonicBloc, GenerateMnemonicState>(
             builder: (context, currentState) {
@@ -135,13 +134,15 @@ class GeneratedAccountBody extends StatelessWidget {
             value: currentState.termsAccepted,
             onChanged: (value) => _updateCheckBoxValue(context),
           ),
-          MouseRegion(
-            cursor: SystemMouseCursors.click,
-            child: GestureDetector(
-              onTap: () => _updateCheckBoxValue(context),
-              child: Text(
-                AppLocalizations.of(context)!.iHaveWrittenTheWords,
-                style: DesmosTextStyles.warningBody(context),
+          Expanded(
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () => _updateCheckBoxValue(context),
+                child: Text(
+                  AppLocalizations.of(context)!.iHaveWrittenTheWords,
+                  style: DesmosTextStyles.warningBody(context),
+                ),
               ),
             ),
           ),

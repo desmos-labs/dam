@@ -33,14 +33,15 @@ class GenerateAccountPage extends StatelessWidget {
         create: (context) => GenerateAccountBloc()
           ..add(GenerateAccounts(accountsNumber, mnemonic)),
         child: BlocBuilder<GenerateAccountBloc, GenerateAccountState>(
-            builder: (context, state) {
-          final currentState = state;
-          if (currentState is GenerateAccountCompleted) {
-            return AccountGeneratedBody(addresses: currentState.addresses);
-          }
+          builder: (context, state) {
+            final currentState = state;
+            if (currentState is GenerateAccountCompleted) {
+              return AccountGeneratedBody(addresses: currentState.addresses);
+            }
 
-          return LoadingBar();
-        }),
+            return LoadingBar();
+          },
+        ),
       ),
     );
   }

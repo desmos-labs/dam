@@ -42,8 +42,7 @@ class MnemonicInputBody extends StatelessWidget {
           return Stack(
             children: [
               ContentContainer(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: ListView(
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

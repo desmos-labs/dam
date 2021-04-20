@@ -44,7 +44,6 @@ class GenerateMnemonicBloc
 
     final mnemonic = await DesmosWallet.generateMnemonic();
     yield GenerateMnemonicLoaded(
-      creatingAddress: false,
       mnemonic: mnemonic,
       termsAccepted: termsAccepted,
     );

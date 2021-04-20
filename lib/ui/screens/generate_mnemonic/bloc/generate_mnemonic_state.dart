@@ -13,12 +13,10 @@ class GenerateMnemonicLoading extends GenerateMnemonicState {
 /// State that is used to represent the fact that the mnemonic phrase has been
 /// loaded properly and should be visualized by the user.
 class GenerateMnemonicLoaded extends GenerateMnemonicState {
-  final bool creatingAddress;
   final List<String> mnemonic;
   final bool termsAccepted;
 
   GenerateMnemonicLoaded({
-    required this.creatingAddress,
     required List<String> mnemonic,
     required this.termsAccepted,
   })   : assert(mnemonic.isNotEmpty),
@@ -26,7 +24,6 @@ class GenerateMnemonicLoaded extends GenerateMnemonicState {
 
   factory GenerateMnemonicLoaded.initial(List<String> mnemonic) {
     return GenerateMnemonicLoaded(
-      creatingAddress: false,
       mnemonic: mnemonic,
       termsAccepted: false,
     );
@@ -38,12 +35,11 @@ class GenerateMnemonicLoaded extends GenerateMnemonicState {
     bool? termsAccepted,
   }) {
     return GenerateMnemonicLoaded(
-      creatingAddress: creatingAddress ?? this.creatingAddress,
       mnemonic: mnemonic ?? this.mnemonic,
       termsAccepted: termsAccepted ?? this.termsAccepted,
     );
   }
 
   @override
-  List<Object> get props => [creatingAddress, mnemonic, termsAccepted];
+  List<Object> get props => [mnemonic, termsAccepted];
 }

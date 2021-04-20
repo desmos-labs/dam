@@ -38,6 +38,7 @@ dependencies:
       path: plugins/window_size
   isolate_handler: ^1.0.0
   worker_manager: ^4.0.0
+  responsive_grid_list: ^1.2.0
 
 dev_dependencies:
   flutter_test:

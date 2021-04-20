@@ -24,9 +24,9 @@ class ContentContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final screen = MediaQuery.of(context).size;
 
-    if (DesmosPlatform.isMobile(context)) {
+    if (DesmosPlatform.isMobile(context) || DesmosPlatform.isTablet(context)) {
       final padding = EdgeInsets.all(16);
-      return SingleChildScrollView(
+      return Container(
         padding: padding,
         child: child,
       );
