@@ -68,3 +68,13 @@ jobs:
             org.opencontainers.image.source=${{ github.event.repository.html_url }}
             org.opencontainers.image.created=${{ steps.prep.outputs.created }}
             org.opencontainers.image.revision=${{ github.sha }}
+
+      - name: Update Akash image 🌐
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+            -d '{"parameters":{"tag": "test"}}' \
+            -k ${{ secrets.AKASH_WEBHOOK_URL }} \
+            -u "deploy:${{ secrets.AKASH_WEBHOOK_SECRET }}"
+
+
+
