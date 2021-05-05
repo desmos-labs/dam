@@ -1,4 +1,4 @@
-import 'package:alan/alan.dart';
+import 'package:dam/crw-wallet/crw-wallet.dart';
 import 'package:flutter/foundation.dart';
 import 'package:sprintf/sprintf.dart';
 
@@ -12,14 +12,10 @@ class _AddressesData {
 /// Utility class that allows to generate a Desmos Wallet given a
 /// mnemonic phrase.
 class DesmosWallet {
-  static final _path = "44'/852'/%d'/0/0";
-  static final NetworkInfo _info = NetworkInfo(
-    bech32Hrp: 'desmos',
-    fullNodeHost: 'localhost',
-  );
+  static final _path = "m/44'/852'/%d'/0/0";
 
   static Future<List<String>> generateMnemonic() async {
-    return Bip39.generateMnemonic(strength: 256);
+    return CrwWallet.randomMnemonic().split(' ');
   }
 
   static String getPath(int index) {
@@ -38,8 +34,8 @@ class DesmosWallet {
   static List<String> _generateAddresses(_AddressesData data) {
     return List.generate(data.number, (index) {
       var path = getPath(index);
-      final wallet = Wallet.derive(data.mnemonic, _info, derivationPath: path);
-      return wallet.bech32Address;
+      final wallet = CrwWallet.fromMnemonic(data.mnemonic.join(' '), path);
+      return wallet.getBetch32Address('desmos');
     });
   }
 }

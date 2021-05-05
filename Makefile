@@ -7,6 +7,9 @@ lint:
 format:
 	find . $(FILES) | tr '\n' ' ' | xargs flutter format
 
+bindgen:
+	dart run ffigen
+
 generate-lib:
 	cargo make
 	mv -f target/aarch64-linux-android/debug/libwallet_ffi.so packages/wallet/android/src/main/jniLibs/arm64-v8a/
@@ -16,5 +19,16 @@ generate-lib:
 build-docker:
 	flutter build web --release
 	docker build --build-arg UID=$(shell id -u) --build-arg GID=$(shell id -g) -f ./Dockerfile --tag desmoslabs/dam build/web
+
+build-linux: bindgen
+	flutter build linux --release
+	@echo "Build available inside build/linux/release/bundle"
+
+build-android: bindgen
+	flutter build apk --target-platform android-arm,android-arm64 --split-per-abi
+	@echo "Build available inside build/app/outputs/flutter-apk"
+
+build-windows: bindgen
+	flutter build windows --release
 
 .PHONY: lint format generate-lib build-docke

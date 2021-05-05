@@ -37,13 +37,24 @@ dependencies:
       url: git://github.com/google/flutter-desktop-embedding.git
       path: plugins/window_size
   isolate_handler: ^1.0.0
-  worker_manager: ^4.0.0
+  worker_manager: ^4.0.1
   responsive_grid_list: ^1.2.0
+  ffigen: ^2.4.2
+  js: ^0.6.0
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   pedantic: ^1.11.0
+
+ffigen:
+  output: 'lib/crw-wallet/native/crw_wallet_binding.dart'
+  headers:
+    entry-points:
+      - 'native/libcrw_binding.h'
+  name: 'WalletBinding'
+  description: 'Dart bindings for crw-wallet'
 
 flutter:
   generate: true
