@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 import 'crw-wallet_stub.dart'
+if (dart.library.js) 'web/crw_wallet_wasm.dart'
 if (dart.library.io) 'package:dam/crw-wallet/native/crw_wallet_native.dart';
 
 /// Represents the native wallet exposed from the Cosmos rust wallet

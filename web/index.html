@@ -30,6 +30,7 @@
   <meta name="theme-color" content="#ffffff">
 
   <title>Desmos Account Manager</title>
+  <script src="crw_wallet.js"></script>
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
@@ -42,6 +43,12 @@
         navigator.serviceWorker.register('flutter_service_worker.js');
       });
     }
+  </script>
+  <script>
+    // Expose the wasm_bindgen to Dart
+    window['crw_wallet'] = wasm_bindgen;
+    // Load the wasm code.
+    wasm_bindgen('crw_wallet_bg.wasm');
   </script>
   <script src="main.dart.js" type="application/javascript"></script>
 </body>
