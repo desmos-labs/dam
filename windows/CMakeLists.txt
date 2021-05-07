@@ -39,11 +39,17 @@ function(APPLY_STANDARD_SETTINGS TARGET)
 endfunction()
 
 set(FLUTTER_MANAGED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/flutter")
+set(CUSTOM_LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib")
 
 # Flutter library and tool build rules.
 add_subdirectory(${FLUTTER_MANAGED_DIR})
 
 # Application build
+
+# Include the custom libraries
+link_directories(${CUSTOM_LIB_DIR})
+file(GLOB CUSTOM_LIBS "${CUSTOM_LIB_DIR}/*.dll")
+
 add_subdirectory("runner")
 
 # Generated plugin build rules, which manage building the plugins and adding
@@ -72,6 +78,9 @@ install(FILES "${FLUTTER_ICU_DATA_FILE}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}
   COMPONENT Runtime)
 
 install(FILES "${FLUTTER_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+  COMPONENT Runtime)
+
+install(FILES "${CUSTOM_LIBS}" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
   COMPONENT Runtime)
 
 if(PLUGIN_BUNDLED_LIBRARIES)
