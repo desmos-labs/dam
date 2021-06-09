@@ -48,14 +48,6 @@ dev_dependencies:
     sdk: flutter
   pedantic: ^1.11.0
 
-ffigen:
-  output: 'lib/crw-wallet/native/crw_wallet_binding.dart'
-  headers:
-    entry-points:
-      - 'native/libcrw_binding.h'
-  name: 'WalletBinding'
-  description: 'Dart bindings for crw-wallet'
-
 flutter:
   generate: true
   uses-material-design: true

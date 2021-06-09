@@ -10,6 +10,9 @@ format:
 bindgen:
 	dart run ffigen
 
+generate-bindings:
+	dart run ffigen --config ffigen_crw_wallet.yaml
+
 generate-lib:
 	cargo make
 	mv -f target/aarch64-linux-android/debug/libwallet_ffi.so packages/wallet/android/src/main/jniLibs/arm64-v8a/
