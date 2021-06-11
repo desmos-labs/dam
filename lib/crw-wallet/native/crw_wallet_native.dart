@@ -37,11 +37,11 @@ class CrwWalletNative extends CrwWallet {
   CrwWalletNative._(this._wallet);
 
   static String _getLastErrorMessage() {
-    var error = using((Pool pool) {
+    var error = using((Arena arena) {
       // Get the last error length
       var len = _walletBinding.last_error_length();
       // Allocate the buffer where will be stored the error message on the heap
-      var buf = pool.allocate<Int8>(len);
+      var buf = arena.allocate<Int8>(len);
 
       var error = 'Unknown error';
       // Passe the pointer to the native code to get the message
@@ -78,9 +78,9 @@ class CrwWalletNative extends CrwWallet {
       throw Exception('This wallet was destroyed');
     }
 
-    return using((Pool pool) {
+    return using((Arena arena) {
       final KEY_SIZE = 65;
-      var out_buf = pool.allocate<Uint8>(KEY_SIZE);
+      var out_buf = arena.allocate<Uint8>(KEY_SIZE);
 
       var key_len = _walletBinding.wallet_get_public_key(_wallet, compressed ? 1 : 0, out_buf, KEY_SIZE);
       if (key_len > 0) {
@@ -118,9 +118,9 @@ class CrwWalletNative extends CrwWallet {
       throw Exception('This wallet was freed');
     }
 
-    var signature = using((Pool pool) {
+    var signature = using((Arena arena) {
       // Move the data to a buffer that can be accessed from the native code.
-      var data_to_sign_ptr = data.getPointer(allocator: pool);
+      var data_to_sign_ptr = data.getPointer(allocator: arena);
 
       var signature_ptr = _walletBinding.wallet_sign(_wallet, data_to_sign_ptr, data.length);
 
