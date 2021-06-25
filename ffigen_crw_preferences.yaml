@@ -1,0 +1,6 @@
+output: 'lib/preferences/native/crw_preferences_binding.dart'
+headers:
+  entry-points:
+    - 'native/crw_preferences.h'
+name: 'PreferencesBinding'
+description: 'Bindings for crw-preferences'

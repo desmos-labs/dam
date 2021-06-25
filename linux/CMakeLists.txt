@@ -25,6 +25,8 @@ endfunction()
 
 set(FLUTTER_MANAGED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/flutter")
 
+set(CUSTOM_LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib")
+
 # Flutter library and tool build rules.
 add_subdirectory(${FLUTTER_MANAGED_DIR})
 
@@ -33,6 +35,11 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(GTK REQUIRED IMPORTED_TARGET gtk+-3.0)
 
 # Application build
+
+# Include the custom libraries
+link_directories(${CUSTOM_LIB_DIR})
+file(GLOB CUSTOM_LIBS "${CUSTOM_LIB_DIR}/*.so")
+
 add_executable(${BINARY_NAME}
   "main.cc"
   "my_application.cc"
@@ -41,6 +48,7 @@ add_executable(${BINARY_NAME}
 apply_standard_settings(${BINARY_NAME})
 target_link_libraries(${BINARY_NAME} PRIVATE flutter)
 target_link_libraries(${BINARY_NAME} PRIVATE PkgConfig::GTK)
+target_link_libraries(${BINARY_NAME} PRIVATE crw_preferences)
 add_dependencies(${BINARY_NAME} flutter_assemble)
 
 # Generated plugin build rules, which manage building the plugins and adding
@@ -71,6 +79,9 @@ install(FILES "${FLUTTER_ICU_DATA_FILE}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}
   COMPONENT Runtime)
 
 install(FILES "${FLUTTER_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+  COMPONENT Runtime)
+
+install(FILES ${CUSTOM_LIBS} DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
   COMPONENT Runtime)
 
 if(PLUGIN_BUNDLED_LIBRARIES)
