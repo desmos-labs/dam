@@ -118,5 +118,13 @@
   "textCopied": "Text copied inside the clipboard",
   "@textCopied": {
     "description": "Message shown to the user when he copies a text inside the device clipboard"
+  },
+  "walletPasswordMessage": "Please provide a password. This password will be used to secure your wallet.",
+  "@walletPasswordMessage": {
+    "description": "Label used to describe why we need a password to generate the wallet"
+  },
+  "confirmPasswordButtonText": "Continue",
+  "@confirmPasswordButtonText": {
+    "description": "Button used to confirm the password used to store the mnemonic and continue to the addresses page"
   }
 }

@@ -48,6 +48,6 @@ class GenerateAccountPage extends StatelessWidget {
 
   /// Called when the close button is pressed
   void _onClosePressed(BuildContext context) {
-    Navigator.pop(context);
+    //Navigator.pop(context);
   }
 }
