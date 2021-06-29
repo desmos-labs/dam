@@ -4,15 +4,23 @@ abstract class WalletState extends Equatable {
   const WalletState();
 }
 
+class WalletStateNotInitialized extends WalletState {
+  const WalletStateNotInitialized();
+
+  @override
+  List<Object?> get props => [];
+  
+}
+
 class WalletStateLocked extends WalletState {
   const WalletStateLocked();
 
   @override
   List<Object?> get props => [];
+
 }
 
 class WalletStateUnlocking extends WalletState {
-
   const WalletStateUnlocking();
 
   @override
@@ -22,7 +30,7 @@ class WalletStateUnlocking extends WalletState {
 
 class WalletStateUnlocked extends WalletState {
 
-  final String mnemonic;
+  final List<String> mnemonic;
 
   WalletStateUnlocked(this.mnemonic);
 

@@ -5,7 +5,7 @@ import 'content/export.dart';
 
 /// This widget represents the home page of the application, which is the
 /// main screen that is shown to the user when they open the app.
-class HomePage extends StatelessWidget {
+class InitWalletPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

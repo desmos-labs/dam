@@ -1,13 +1,12 @@
-import 'package:dam/sources/wallet/wallet_source.dart';
+import 'package:dam/blocs/wallet/export.dart';
 import 'package:dam/ui/screens/unlock_wallet/unlock_wallet_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
-import 'package:kiwi/kiwi.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp(
       title: 'Desmos Account Manager',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -26,11 +25,26 @@ class MyApp extends StatelessWidget {
               ),
         ),
       ),
-      home: _walletInitialized() ? UnlockWalletPage() : HomePage(),
+      home: _getPageContent(),
     );
   }
-  
-  bool _walletInitialized() {
-    return KiwiContainer().resolve<WalletSource>().initialized();
+
+  Widget _getPageContent() {
+    return BlocProvider<WalletBloc>(
+        create: (_) => WalletBloc.newInstance(),
+        child: BlocBuilder<WalletBloc, WalletState>(
+          builder: (context, state) {
+            if (state is WalletStateNotInitialized) {
+              return InitWalletPage();
+            } else if (state is WalletStateLocked) {
+              return UnlockWalletPage();
+            } else if (state is WalletStateUnlocked) {
+              return ShowAddressesPage(
+                  accountsNumber: 3, mnemonic: state.mnemonic);
+            } else {
+              return Text('Unknown state...');
+            }
+          },
+        ));
   }
 }

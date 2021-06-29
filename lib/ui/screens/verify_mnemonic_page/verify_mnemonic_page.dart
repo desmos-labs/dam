@@ -48,6 +48,6 @@ class VerifyMnemonicPage extends StatelessWidget {
 
   /// Called when the user presses the "Next" button.
   void _onNext(BuildContext context, List<String> words, int accountsNumber) {
-    DesmosRoutes.navigateToGeneratedAddress(context, accountsNumber, words);
+    DesmosRoutes.navigateToCreatePassword(context, words);
   }
 }

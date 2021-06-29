@@ -1,3 +1,5 @@
+import 'package:dam/blocs/wallet/wallet_bloc.dart';
+import 'package:dam/blocs/wallet/wallet_event.dart';
 import 'package:dam/ui/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,11 +9,11 @@ import 'widgets/export.dart';
 
 /// Page that is shown to the user when they have generated a new account.
 /// It contains the address and the option to copy it.
-class GenerateAccountPage extends StatelessWidget {
+class ShowAddressesPage extends StatelessWidget {
   final int accountsNumber;
   final List<String> mnemonic;
 
-  const GenerateAccountPage({
+  const ShowAddressesPage({
     Key? key,
     required this.accountsNumber,
     required this.mnemonic,
@@ -38,7 +40,6 @@ class GenerateAccountPage extends StatelessWidget {
             if (currentState is GenerateAccountCompleted) {
               return AccountGeneratedBody(addresses: currentState.addresses);
             }
-
             return LoadingBar();
           },
         ),
@@ -48,6 +49,6 @@ class GenerateAccountPage extends StatelessWidget {
 
   /// Called when the close button is pressed
   void _onClosePressed(BuildContext context) {
-    //Navigator.pop(context);
+    context.read<WalletBloc>().add(WalletEventLock());
   }
 }

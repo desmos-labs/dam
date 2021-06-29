@@ -31,7 +31,7 @@ abstract class SecureSource {
   }
 
   /// Check if exist a secure source with the provided name into the device storage.
-  bool initialized() {
+  bool isInitialized() {
     return Preferences.exist(name);
   }
 
