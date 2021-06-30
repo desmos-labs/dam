@@ -5,15 +5,11 @@ abstract class CreateWalletState extends Equatable {
 }
 
 class CreateWalletCreating extends CreateWalletState {
-
   @override
   List<Object?> get props => [];
-
 }
 
 class CreateWalletCreated extends CreateWalletState {
-
   @override
   List<Object?> get props => [];
-
 }

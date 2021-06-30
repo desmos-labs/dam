@@ -7,6 +7,7 @@ import 'package:meta/meta.dart';
 abstract class SecureSource {
   /// The source name, MUST be unique for every source.
   final String name;
+
   /// Reference to the crw-preference library object.
   Preferences? _preferences;
 
@@ -21,7 +22,7 @@ abstract class SecureSource {
   /// NOTE: All the data inside the source will be deleted and the source will
   /// be reinitialized with the new password.
   void initEmpty(String password) {
-    if(!isLocked()) {
+    if (!isLocked()) {
       preferences.erase();
       preferences.destroy();
     }

@@ -45,3 +45,6 @@ app.*.map.json
 
 # Rust related
 target/
+
+# Generated files
+**.g.dart

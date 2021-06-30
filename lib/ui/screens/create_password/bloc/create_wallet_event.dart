@@ -5,7 +5,6 @@ abstract class CreateWalletEvent extends Equatable {
 }
 
 class CreateNewWalletEvent extends CreateWalletEvent {
-
   final String mnemonic;
   final String password;
 

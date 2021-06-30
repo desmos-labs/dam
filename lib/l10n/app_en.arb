@@ -75,7 +75,7 @@
   "@mnemonicNotValidError": {
     "description": "Error message that is shown to the user when the mnemonic is not valid"
   },
-  "accountsToBeGeneratedText" : "Number of addresses to generate:",
+  "accountsToBeGeneratedText": "Number of addresses to generate:",
   "@accountsToBeGeneratedText": {
     "description": "Text used to describe the field that allows the user to tell how many addresses to generate from the mnemonic phrase"
   },

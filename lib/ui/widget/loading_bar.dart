@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
+import 'package:flutter/material.dart';
 
 /// Represents a loading bar
 class LoadingBar extends StatelessWidget {

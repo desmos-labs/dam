@@ -2,8 +2,8 @@ import 'package:dam/ui/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'widgets/export.dart';
 import 'bloc/export.dart';
+import 'widgets/export.dart';
 
 /// This page is shown to the user when they navigate here from the main screen.
 /// It is used to generate a new Desmos account data and let them copy the

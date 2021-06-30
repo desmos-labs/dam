@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kiwi/kiwi.dart';
 
 class CreateWalletBloc extends Bloc<CreateWalletEvent, CreateWalletState?> {
-
   CreateWalletBloc() : super(null);
 
   @override
@@ -23,5 +22,4 @@ class CreateWalletBloc extends Bloc<CreateWalletEvent, CreateWalletState?> {
     walletSource.lock();
     emit(CreateWalletCreated());
   }
-
 }

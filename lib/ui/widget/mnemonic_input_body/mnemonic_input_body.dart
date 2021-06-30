@@ -1,7 +1,7 @@
+import 'package:dam/ui/export.dart';
 import 'package:dam/ui/widget/mnemonic_input_body/bloc/export.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:dam/ui/export.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/export.dart';

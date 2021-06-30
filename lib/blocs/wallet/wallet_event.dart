@@ -5,7 +5,6 @@ abstract class WalletEvent extends Equatable {
 }
 
 class WalletEventCreate extends WalletEvent {
-
   final String password;
   final List<String> mnemonic;
 
@@ -16,7 +15,6 @@ class WalletEventCreate extends WalletEvent {
 }
 
 class WalletEventLock extends WalletEvent {
-
   const WalletEventLock();
 
   @override
@@ -24,7 +22,6 @@ class WalletEventLock extends WalletEvent {
 }
 
 class WalletEventUnlock extends WalletEvent {
-
   final String password;
 
   WalletEventUnlock(this.password);

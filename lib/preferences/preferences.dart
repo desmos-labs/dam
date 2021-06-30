@@ -1,13 +1,11 @@
 import 'dart:typed_data';
-import 'package:dam/preferences/native/crw_preferences_native.dart';
 
 import 'preferences_stub.dart'
-if (dart.library.io) 'package:dam/preferences/native/crw_preferences_native.dart';
+    if (dart.library.io) 'native/crw_preferences_native.dart';
 
 /// Abstract class that represents the Preference trait exposed from the
 /// crw-preferences library.
 abstract class Preferences {
-
   /// Sets the application [dir] where will be stored the preferences.
   /// The [dir] should be just a name for windows, mac, and linux. The complete
   /// directory path on android.
@@ -81,9 +79,10 @@ abstract class Preferences {
 
 class PreferencesException implements Exception {
   String message;
+
   PreferencesException(this.message);
 }
 
 class InvalidPreferencesPassword extends PreferencesException {
-  InvalidPreferencesPassword(): super('invalid password');
+  InvalidPreferencesPassword() : super('invalid password');
 }

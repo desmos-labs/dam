@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
+import 'package:flutter/material.dart';
 
 /// Contains all the Desmos text styles used through all the application.
 class DesmosTextStyles {

@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
+import 'package:flutter/material.dart';
 
 /// Allows to display the given child in two different ways based on the
 /// current platform on which the application is executing.
@@ -27,10 +27,10 @@ class ContentContainer extends StatelessWidget {
     if (DesmosPlatform.isMobile(context) || DesmosPlatform.isTablet(context)) {
       final padding = EdgeInsets.all(16);
       return Container(
-        padding: padding,
-        child: SafeArea(
-          child: child,
-      ));
+          padding: padding,
+          child: SafeArea(
+            child: child,
+          ));
     }
 
     return Row(

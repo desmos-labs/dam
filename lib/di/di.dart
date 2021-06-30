@@ -1,5 +1,5 @@
-import 'package:kiwi/kiwi.dart';
 import 'package:dam/sources/wallet/wallet_source.dart';
+import 'package:kiwi/kiwi.dart';
 
 part 'di.g.dart';
 

@@ -1,6 +1,6 @@
+import 'package:dam/ui/export.dart';
 import 'package:dam/wallet/export.dart';
 import 'package:flutter/material.dart';
-import 'package:dam/ui/export.dart';
 
 class DesmosAddressViewer extends StatelessWidget {
   final int index;

@@ -9,7 +9,6 @@ class WalletStateNotInitialized extends WalletState {
 
   @override
   List<Object?> get props => [];
-  
 }
 
 class WalletStateLocked extends WalletState {
@@ -17,7 +16,6 @@ class WalletStateLocked extends WalletState {
 
   @override
   List<Object?> get props => [];
-
 }
 
 class WalletStateUnlocking extends WalletState {
@@ -25,18 +23,15 @@ class WalletStateUnlocking extends WalletState {
 
   @override
   List<Object?> get props => [];
-
 }
 
 class WalletStateUnlocked extends WalletState {
-
   final List<String> mnemonic;
 
   WalletStateUnlocked(this.mnemonic);
 
   @override
   List<Object?> get props => [mnemonic];
-
 }
 
 enum WalletStateErrorKind {
@@ -45,7 +40,6 @@ enum WalletStateErrorKind {
 }
 
 class WalletStateError extends WalletState {
-
   final WalletStateErrorKind errorKind;
   final String? message;
 
@@ -53,5 +47,4 @@ class WalletStateError extends WalletState {
 
   @override
   List<Object?> get props => [errorKind, message];
-
 }

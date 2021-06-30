@@ -1,6 +1,6 @@
+import 'package:clipboard/clipboard.dart';
 import 'package:dam/ui/export.dart';
 import 'package:flutter/material.dart';
-import 'package:clipboard/clipboard.dart';
 
 import 'desmos_address_view.dart';
 

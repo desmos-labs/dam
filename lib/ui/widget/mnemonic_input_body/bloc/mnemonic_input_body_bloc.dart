@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:dam/ui/export.dart';
 
-import 'mnemonic_input_body_state.dart';
 import 'mnemonic_input_body_event.dart';
+import 'mnemonic_input_body_state.dart';
 
 /// Cubit of the "Import mnemonic" page.
 class MnemonicInputBodyBloc

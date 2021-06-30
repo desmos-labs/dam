@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dam/wallet/export.dart';
 
-import 'generate_account_state.dart';
 import 'generate_account_event.dart';
+import 'generate_account_state.dart';
 
 /// Represents the Bloc of the account generation page.
 class GenerateAccountBloc

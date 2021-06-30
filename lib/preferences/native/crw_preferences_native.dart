@@ -2,10 +2,10 @@ import 'dart:ffi';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:dam/preferences/preferences.dart';
-import 'package:ffi/ffi.dart';
 import 'package:dam/utils/export.dart';
+import 'package:ffi/ffi.dart';
 import 'package:flutter/foundation.dart';
-import 'crw_preferences_binding.dart' as binding;
+import 'crw_preferences_binding.g.dart' as binding;
 
 late final binding.PreferencesBinding _binding = _loadDynamicLib();
 
@@ -15,16 +15,14 @@ binding.PreferencesBinding _loadDynamicLib() {
   if (Platform.isLinux) {
     if (kDebugMode) {
       lib = DynamicLibrary.open('./linux/lib/libcrw_preferences.so');
-    }
-    else {
+    } else {
       lib = DynamicLibrary.process();
     }
-  }
-  else if (Platform.isAndroid) {
+  } else if (Platform.isAndroid) {
     lib = DynamicLibrary.open('libcrw_preferences.so');
-  }
-  else {
-    throw PreferencesException('libcrw_preferences is not compatible with this platform');
+  } else {
+    throw PreferencesException(
+        'libcrw_preferences is not compatible with this platform');
   }
 
   return binding.PreferencesBinding(lib);
@@ -54,6 +52,7 @@ String _getLastErrorMessage() {
 /// Represents a wallet tha can sign transactions.
 class PreferencesNative extends Preferences {
   Pointer<Void> _preferences;
+
   PreferencesNative._(this._preferences);
 
   /// Checks that the current instance was not freed with the
@@ -70,14 +69,13 @@ class PreferencesNative extends Preferences {
 
     return using((Arena pool) {
       var i32_ptr = pool.allocate<Int32>(4);
-      var rc = _binding.preferences_get_i32(_preferences, key.toNativeUtf8(allocator: pool).cast(), i32_ptr);
+      var rc = _binding.preferences_get_i32(
+          _preferences, key.toNativeUtf8(allocator: pool).cast(), i32_ptr);
       if (rc == 0) {
         return i32_ptr.value;
-      }
-      else if (rc == -1) {
+      } else if (rc == -1) {
         return null;
-      }
-      else {
+      } else {
         throw PreferencesException(_getLastErrorMessage());
       }
     });
@@ -103,19 +101,20 @@ class PreferencesNative extends Preferences {
     return using((Arena pool) {
       var out_buf = pool.allocate<Uint8>(256);
       var native_key = key.toNativeUtf8(allocator: pool).cast<Int8>();
-      var rc = _binding.preferences_get_bytes(_preferences, native_key, out_buf, 256);
+      var rc = _binding.preferences_get_bytes(
+          _preferences, native_key, out_buf, 256);
 
       if (rc > 256) {
         // The buffer was too small reallocate and get the value
         pool.free(out_buf);
         out_buf = pool.allocate<Uint8>(rc);
-        rc = _binding.preferences_get_bytes(_preferences, native_key, out_buf, rc);
+        rc = _binding.preferences_get_bytes(
+            _preferences, native_key, out_buf, rc);
       }
 
       if (rc == 0) {
         return null;
-      }
-      else if (rc < 0) {
+      } else if (rc < 0) {
         throw PreferencesException(_getLastErrorMessage());
       }
 
@@ -131,7 +130,8 @@ class PreferencesNative extends Preferences {
       var native_key = key.toNativeUtf8(allocator: pool).cast<Int8>();
       var native_binary = value.getPointer(allocator: pool);
 
-      var rc = _binding.preferences_put_bytes(_preferences, native_key, native_binary, value.length);
+      var rc = _binding.preferences_put_bytes(
+          _preferences, native_key, native_binary, value.length);
 
       if (rc != 0) {
         throw PreferencesException(_getLastErrorMessage());
@@ -139,19 +139,19 @@ class PreferencesNative extends Preferences {
     });
   }
 
-
   @override
   bool? getBool(String key) {
     _assertNotFreed();
 
     return using((Arena pool) {
       var ptr = pool.allocate<Int32>(4);
-      var rc = _binding.preferences_get_bool(_preferences, key.toNativeUtf8(allocator: pool).cast(), ptr);
-       if (rc != 0) {
-         throw PreferencesException(_getLastErrorMessage());
-       } else {
-         return ptr.value != 0;
-       }
+      var rc = _binding.preferences_get_bool(
+          _preferences, key.toNativeUtf8(allocator: pool).cast(), ptr);
+      if (rc != 0) {
+        throw PreferencesException(_getLastErrorMessage());
+      } else {
+        return ptr.value != 0;
+      }
     });
   }
 
@@ -162,19 +162,20 @@ class PreferencesNative extends Preferences {
     return using((Arena pool) {
       var out_buf = pool.allocate<Uint8>(256);
       var native_key = key.toNativeUtf8(allocator: pool).cast<Int8>();
-      var rc = _binding.preferences_get_string(_preferences, native_key, out_buf, 256);
+      var rc = _binding.preferences_get_string(
+          _preferences, native_key, out_buf, 256);
 
       if (rc > 256) {
         // The buffer was too small reallocate and get the value
         pool.free(out_buf);
         out_buf = pool.allocate<Uint8>(rc);
-        rc = _binding.preferences_get_string(_preferences, native_key, out_buf, rc);
+        rc = _binding.preferences_get_string(
+            _preferences, native_key, out_buf, rc);
       }
 
       if (rc == 0) {
         return null;
-      }
-      else if (rc < 0) {
+      } else if (rc < 0) {
         throw PreferencesException(_getLastErrorMessage());
       }
 
@@ -189,7 +190,8 @@ class PreferencesNative extends Preferences {
     return using((Arena pool) {
       var native_key = key.toNativeUtf8(allocator: pool).cast<Int8>();
 
-      var rc = _binding.preferences_put_bool(_preferences, native_key, value ? 1 : 0);
+      var rc = _binding.preferences_put_bool(
+          _preferences, native_key, value ? 1 : 0);
 
       if (rc != 0) {
         throw PreferencesException(_getLastErrorMessage());
@@ -205,7 +207,8 @@ class PreferencesNative extends Preferences {
       var native_key = key.toNativeUtf8(allocator: pool).cast<Int8>();
       var native_str = value.toNativeUtf8(allocator: pool).cast<Int8>();
 
-      var rc = _binding.preferences_put_string(_preferences, native_key, native_str);
+      var rc =
+          _binding.preferences_put_string(_preferences, native_key, native_str);
       if (rc != 0) {
         throw PreferencesException(_getLastErrorMessage());
       }
@@ -247,12 +250,12 @@ class PreferencesNative extends Preferences {
       throw PreferencesException(_getLastErrorMessage());
     }
   }
-
 }
 
 void setPreferencesAppDir(String path) {
   using((Arena arena) {
-    _binding.set_preferences_app_dir(path.toNativeUtf8(allocator: arena).cast());
+    _binding
+        .set_preferences_app_dir(path.toNativeUtf8(allocator: arena).cast());
   });
 }
 
@@ -270,8 +273,7 @@ Preferences encryptedPreferences(String name, String key) {
   return using((Arena arena) {
     var ptr = _binding.encrypted_preferences(
         name.toNativeUtf8(allocator: arena).cast(),
-        key.toNativeUtf8(allocator: arena).cast()
-    );
+        key.toNativeUtf8(allocator: arena).cast());
     if (ptr == nullptr) {
       var msg = _getLastErrorMessage();
       if (msg.contains('error while decrypting')) {

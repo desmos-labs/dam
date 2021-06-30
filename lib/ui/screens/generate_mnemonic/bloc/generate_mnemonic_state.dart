@@ -19,7 +19,7 @@ class GenerateMnemonicLoaded extends GenerateMnemonicState {
   GenerateMnemonicLoaded({
     required List<String> mnemonic,
     required this.termsAccepted,
-  })   : assert(mnemonic.isNotEmpty),
+  })  : assert(mnemonic.isNotEmpty),
         mnemonic = mnemonic;
 
   factory GenerateMnemonicLoaded.initial(List<String> mnemonic) {

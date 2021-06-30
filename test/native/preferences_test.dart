@@ -1,8 +1,7 @@
 import 'dart:typed_data';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:dam/preferences/preferences.dart';
 
+import 'package:dam/preferences/preferences.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   // Initialize the app dir.
@@ -25,7 +24,7 @@ void main() {
     preferences.putBool('bool', true);
     preferences.putString('string', TEST_STRING);
     preferences.putBytes('bytes', TEST_BYTES);
-    
+
     preferences.save();
     preferences.destroy();
 
@@ -74,7 +73,7 @@ void main() {
     }, throwsA(isInstanceOf<InvalidPreferencesPassword>()));
 
     // Clear the disk
-    preferences =  Preferences.encrypted(PREFERENCES_NAME, 'secret-key');
+    preferences = Preferences.encrypted(PREFERENCES_NAME, 'secret-key');
     preferences.erase();
     preferences.destroy();
   });

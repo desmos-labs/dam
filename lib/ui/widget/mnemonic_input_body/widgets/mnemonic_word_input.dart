@@ -1,6 +1,7 @@
 import 'dart:ui' as ui;
-import 'package:flutter/material.dart';
+
 import 'package:dam/ui/export.dart';
+import 'package:flutter/material.dart';
 
 /// Represents the input of a single mnemonic phrase word.
 class MnemonicWordInput extends StatelessWidget {

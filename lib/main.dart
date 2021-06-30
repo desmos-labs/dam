@@ -1,10 +1,11 @@
 import 'dart:io';
+
 import 'package:dam/di/di.dart';
 import 'package:dam/preferences/preferences.dart';
-import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
-import 'package:window_size/window_size.dart';
+import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:window_size/window_size.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

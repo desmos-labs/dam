@@ -1,6 +1,6 @@
 import 'package:dam/ui/consts/platform.dart';
-import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
+import 'package:flutter/material.dart';
 
 import 'mnemonic_word_input.dart';
 

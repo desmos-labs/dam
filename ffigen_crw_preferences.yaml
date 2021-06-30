@@ -1,4 +1,4 @@
-output: 'lib/preferences/native/crw_preferences_binding.dart'
+output: 'lib/preferences/native/crw_preferences_binding.g.dart'
 headers:
   entry-points:
     - 'native/crw_preferences.h'

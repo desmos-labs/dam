@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
+import 'package:flutter/material.dart';
 
 /// Page that is shown to the user when they want to import an already existing
 /// mnemonic phrase. It allows to insert the 24 words and then generate the
