@@ -16,7 +16,7 @@ jobs:
       - name: Setup 🔨
         uses: subosito/flutter-action@v1
         with:
-          flutter-version: '2.0.3'
+          flutter-version: '2.2.2'
 
       - name: Get dependencies 📥
         run: flutter packages get
