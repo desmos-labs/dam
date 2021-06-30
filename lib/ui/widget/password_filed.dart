@@ -6,8 +6,14 @@ class PasswordField extends StatelessWidget {
   final String? errorText;
   final TextEditingController? controller;
   final ValueChanged<String>? onFieldSubmitted;
+  final FormFieldValidator<String>? validator;
 
-  PasswordField({this.labelText, this.errorText, this.controller, this.onFieldSubmitted});
+  PasswordField(
+      {this.labelText,
+      this.errorText,
+      this.controller,
+      this.onFieldSubmitted,
+      this.validator});
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +29,7 @@ class PasswordField extends StatelessWidget {
       maxLines: 1,
       controller: controller,
       onFieldSubmitted: onFieldSubmitted,
+      validator: validator,
     );
   }
 }

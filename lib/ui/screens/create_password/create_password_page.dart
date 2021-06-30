@@ -8,11 +8,12 @@ import 'bloc/export.dart';
 
 /// Page that is showed after generating a new wallet or after importing an
 /// existing one.
-/// It is used to let the user create the password usd to securely store
+/// It is used to let the user create the password used to secure
 /// the user's wallet into the device storage.
 class CreateWalletPasswordPage extends StatelessWidget {
   final List<String> mnemonic;
 
+  final _formKey = GlobalKey<FormState>();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
@@ -42,23 +43,35 @@ class CreateWalletPasswordPage extends StatelessWidget {
   }
 
   Widget _passwordsInput(BuildContext context) {
-    return Column(children: [
+    return Form(
+        key: _formKey,
+        child: Column(children: [
       Text(
         AppLocalizations.of(context)!.walletPasswordMessage,
         style: DesmosTextStyles.thinBodyBlack(context),
       ),
       SizedBox(height: 8),
-      PasswordField(labelText: 'Password', controller: _passwordController),
       PasswordField(
-          labelText: 'Confirm password',
+        labelText: AppLocalizations.of(context)!.password,
+        controller: _passwordController,
+        validator: (string) => _validatePassword(context, string),
+      ),
+      PasswordField(
+          labelText: AppLocalizations.of(context)!.confirmPassword,
           controller: _confirmPasswordController,
-          onFieldSubmitted: (_) => _saveMnemonic(context)),
+          validator: (string) {
+            if (string != _passwordController.text) {
+              return AppLocalizations.of(context)!.passwordDontMatch;
+            }
+            return null;
+          },
+          onFieldSubmitted: (_) => _confirmPassword(context)),
       SizedBox(height: 8),
       PrimaryButton(
         text: AppLocalizations.of(context)!.confirmPasswordButtonText,
-        onPressed: () => _saveMnemonic(context),
+        onPressed: () => _confirmPassword(context),
       ),
-    ]);
+    ]));
   }
 
   Widget _walletCreated(BuildContext context) {
@@ -86,10 +99,43 @@ class CreateWalletPasswordPage extends StatelessWidget {
     );
   }
 
-  void _saveMnemonic(BuildContext context) {
-    if (_passwordController.text == _confirmPasswordController.text) {
+  void _confirmPassword(BuildContext context) {
+    if (_formKey.currentState!.validate()) {
       context.read<CreateWalletBloc>().add(
           CreateNewWalletEvent(mnemonic.join(' '), _passwordController.text));
-    } else {}
+    }
+  }
+
+  String? _validatePassword(BuildContext context, String? password) {
+    if (password == null || password.isEmpty) {
+      return AppLocalizations.of(context)!.passwordComplexityErrorEmpty;
+    }
+    var uppercase = 0;
+    var numbers = 0;
+    var specialChars = 0;
+
+    final digitRegex = RegExp(r'[0-9]');
+    final specialCharsRegex = RegExp(r'[!@#$%^&*(),.?":{}|<>]');
+
+    for (var i = 0; i < password.length; i++) {
+      var char = password.substring(i, i + 1);
+      if (char.contains(digitRegex)) {
+        numbers++;
+      } else if (char.contains(specialCharsRegex)) {
+        specialChars++;
+      } else if (password.substring(i, i + 1).toUpperCase() == char) {
+        uppercase++;
+      }
+    }
+
+    if (uppercase < 1) {
+      return AppLocalizations.of(context)!.passwordComplexityErrorUppercase;
+    } else if (numbers < 1) {
+      return AppLocalizations.of(context)!.passwordComplexityErrorNumbers;
+    } else if (specialChars < 1) {
+      return AppLocalizations.of(context)!.passwordComplexityErrorSpecialChars;
+    }
+
+    return null;
   }
 }

@@ -130,5 +130,27 @@
   "walletCreatedMessage": "Wallet created successfully",
   "@walletCreatedMessage": {
     "description": "Text displayed to inform the user that the wallet has been created successfully"
+  },
+  "password": "Password",
+  "confirmPassword": "Confirm password",
+  "passwordComplexityErrorEmpty": "The password can not be empty",
+  "@passwordComplexityErrorEmpty": {
+    "description": "Error message displayed to inform the user that the password used to protect the wallet can not be empty"
+  },
+  "passwordComplexityErrorNumbers": "The password must contains at least 1 number",
+  "@passwordComplexityErrorNumbers": {
+    "description": "Error message displayed to inform the user that the password used to protect the wallet must contains at least 1 number"
+  },
+  "passwordComplexityErrorUppercase": "The password must contains at least 1 uppercase char",
+  "@passwordComplexityErrorUppercase": {
+    "description": "Error message displayed to inform the user that the password used to protect the wallet must contains at least 1 uppercase char"
+  },
+  "passwordComplexityErrorSpecialChars": "The password must contains at least 1 special char",
+  "@passwordComplexityErrorSpecialChars": {
+    "description": "Error message displayed to inform the user that the password used to protect the wallet must contains at least 1 special char"
+  },
+  "passwordDontMatch": "The password don't match",
+  "@passwordDontMatch": {
+    "description": "Error message displayed to inform the user that the confirm password don't match the provided password"
   }
 }
