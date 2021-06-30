@@ -126,5 +126,9 @@
   "confirmPasswordButtonText": "Continue",
   "@confirmPasswordButtonText": {
     "description": "Button used to confirm the password used to store the mnemonic and continue to the addresses page"
+  },
+  "walletCreatedMessage": "Wallet created successfully",
+  "@walletCreatedMessage": {
+    "description": "Text displayed to inform the user that the wallet has been created successfully"
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 /// Collects the most used routes of the application.
 class DesmosRoutes {
-
+  
   static void navigateToCreatePassword(
       BuildContext context,
       List<String> mnemonic,
@@ -16,8 +16,8 @@ class DesmosRoutes {
   }
 
   static void navigateToUnlockWallet(BuildContext context) {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) {
       return UnlockWalletPage();
-    }));
+    }), (route) => false);
   }
 }

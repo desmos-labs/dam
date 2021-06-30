@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinbox/flutter_spinbox.dart';
 
 import 'bloc/export.dart';
 import 'widgets/export.dart';
@@ -24,7 +23,7 @@ class MnemonicInputBody extends StatelessWidget {
   final Widget? texts;
   final List<String>? mnemonicCheck;
 
-  final void Function(List<String> mnemonic, int accountsNumber) onNext;
+  final void Function(List<String> mnemonic) onNext;
 
   const MnemonicInputBody({
     Key? key,
@@ -51,7 +50,6 @@ class MnemonicInputBody extends StatelessWidget {
                         _textBody(context),
                         _mnemonicPhraseInput(context),
                         _errorText(context),
-                        _accountsNumber(context),
                       ],
                     ),
                     if (DesmosPlatform.isMobile(context)) SizedBox(height: 32),
@@ -110,34 +108,6 @@ class MnemonicInputBody extends StatelessWidget {
     );
   }
 
-  Widget _accountsNumber(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: 32),
-        Text(
-          AppLocalizations.of(context)!.accountsToBeGeneratedText,
-          style: DesmosTextStyles.thinBodyGrey(context),
-        ),
-        Container(
-          width: 100,
-          child: SpinBox(
-            min: 1,
-            value: 1,
-            max: 3,
-            decimals: 0,
-            step: 1,
-            enableInteractiveSelection: false,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-            ),
-            onChanged: (value) => _onAccountsNumberChanged(context, value),
-          ),
-        ),
-      ],
-    );
-  }
-
   Widget _testButton(BuildContext context) {
     if (!kDebugMode) {
       return Container();
@@ -192,11 +162,6 @@ class MnemonicInputBody extends StatelessWidget {
     );
   }
 
-  void _onAccountsNumberChanged(BuildContext context, double value) {
-    BlocProvider.of<MnemonicInputBodyBloc>(context)
-        .add(ChangeAccountsNumber(value.toInt()));
-  }
-
   /// Called when the word at the given index changes.
   void _onWordChanged(BuildContext context, int index, String word) {
     BlocProvider.of<MnemonicInputBodyBloc>(context)
@@ -208,7 +173,7 @@ class MnemonicInputBody extends StatelessWidget {
     final bloc = BlocProvider.of<MnemonicInputBodyBloc>(context);
     bloc.add(ShowsLoadingBar());
     Future.delayed(Duration(milliseconds: 500), () {
-      onNext(bloc.state.mnemonic, bloc.state.accountsNumber);
+      onNext(bloc.state.mnemonic);
     });
   }
 }

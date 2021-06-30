@@ -1,5 +1,5 @@
 import 'package:dam/blocs/wallet/export.dart';
-import 'package:dam/ui/screens/unlock_wallet/unlock_wallet_page.dart';
+import 'package:dam/ui/screens/export.dart';
 import 'package:flutter/material.dart';
 import 'package:dam/ui/export.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

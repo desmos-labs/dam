@@ -28,8 +28,9 @@ class ContentContainer extends StatelessWidget {
       final padding = EdgeInsets.all(16);
       return Container(
         padding: padding,
-        child: child,
-      );
+        child: SafeArea(
+          child: child,
+      ));
     }
 
     return Row(

@@ -42,13 +42,6 @@ class WalletBloc extends Bloc<WalletEvent, WalletState> {
     }
   }
 
-
-  @override
-  void onEvent(WalletEvent event) {
-    print(event);
-    super.onEvent(event);
-  }
-
   static WalletBloc newInstance() {
     var walletSource = KiwiContainer().resolve<WalletSource>();
     if (!walletSource.isInitialized()) {

@@ -11,37 +11,36 @@ class UnlockWalletPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-          child: BlocProvider<WalletBloc>(
-        create: (_) => WalletBloc.newInstance(),
-        child: BlocBuilder<WalletBloc, WalletState>(
-          builder: (context, state) {
-            if (state is WalletStateLocked) {
-              return _unlockPage(context, false);
-            } else if (state is WalletStateUnlocking) {
-              return LoadingBar();
-            } else if (state is WalletStateUnlocked) {
-              return ShowAddressesPage(
-                  accountsNumber: 3, mnemonic: state.mnemonic);
-            } else {
-              if (state is WalletStateError) {
-                if (state.errorKind == WalletStateErrorKind.WrongPassword) {
-                  return _unlockPage(context, true);
-                } else {
-                  return _errorPage(state.message ?? 'Unknown error');
-                }
+    return BlocProvider<WalletBloc>(
+      create: (_) => WalletBloc.newInstance(),
+      child: BlocBuilder<WalletBloc, WalletState>(
+        builder: (context, state) {
+          if (state is WalletStateLocked) {
+            return _unlockPage(context, false);
+          } else if (state is WalletStateUnlocking) {
+            return LoadingBar();
+          } else if (state is WalletStateUnlocked) {
+            return ShowAddressesPage(
+                accountsNumber: 3, mnemonic: state.mnemonic);
+          } else {
+            if (state is WalletStateError) {
+              if (state.errorKind == WalletStateErrorKind.WrongPassword) {
+                return _unlockPage(context, true);
+              } else {
+                return _errorPage(state.message ?? 'Unknown error');
               }
-              return _errorPage('Fatal error, invalid state...');
             }
-          },
-        ),
-      )),
+            return _errorPage('Fatal error, invalid state...');
+          }
+        },
+      ),
     );
   }
 
   Widget _unlockPage(BuildContext context, bool wrong_password) {
-    return Center(
+    return Scaffold(
+        body: ContentContainer(
+            child: Center(
       child: Column(
         children: [
           PasswordField(
@@ -49,10 +48,11 @@ class UnlockWalletPage extends StatelessWidget {
               errorText: wrong_password ? 'Wrong password' : null,
               controller: _passwordController,
               onFieldSubmitted: (_) => _onUnlockPressed(context)),
-          LightButton(text: 'Unlock', onPressed: () => _onUnlockPressed(context)),
+          PrimaryButton(
+              text: 'Unlock', onPressed: () => _onUnlockPressed(context)),
         ],
       ),
-    );
+    )));
   }
 
   Widget _errorPage(String message) {

@@ -1,4 +1,3 @@
-import 'package:dam/ui/widget/light_button.dart';
 import 'package:dam/ui/widget/password_filed.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +24,7 @@ class CreateWalletPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
+        body: ContentContainer(
       child: BlocProvider(
         create: (_) => CreateWalletBloc(),
         child: BlocBuilder<CreateWalletBloc, CreateWalletState?>(
@@ -35,28 +34,7 @@ class CreateWalletPasswordPage extends StatelessWidget {
           } else if (state is CreateWalletCreating) {
             return LoadingBar();
           } else {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Image.asset(
-                    'assets/account-generated.png',
-                  ),
-                ),
-                SizedBox(height: DesmosPlatform.isMobile(context) ? 16 : 24),
-                Text(
-                  'Wallet created successfully',
-                  style: DesmosTextStyles.largeBody(context),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: DesmosPlatform.isMobile(context) ? 16 : 24),
-                LightButton(
-                    text:
-                        AppLocalizations.of(context)!.confirmPasswordButtonText,
-                    onPressed: () =>
-                        DesmosRoutes.navigateToUnlockWallet(context)),
-              ],
-            );
+            return _walletCreated(context);
           }
         }),
       ),
@@ -76,11 +54,36 @@ class CreateWalletPasswordPage extends StatelessWidget {
           controller: _confirmPasswordController,
           onFieldSubmitted: (_) => _saveMnemonic(context)),
       SizedBox(height: 8),
-      LightButton(
+      PrimaryButton(
         text: AppLocalizations.of(context)!.confirmPasswordButtonText,
         onPressed: () => _saveMnemonic(context),
       ),
     ]);
+  }
+
+  Widget _walletCreated(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: Image.asset(
+            'assets/account-generated.png',
+          ),
+        ),
+        SizedBox(height: DesmosPlatform.isMobile(context) ? 16 : 24),
+        Text(
+          AppLocalizations.of(context)!.walletCreatedMessage,
+          style: DesmosTextStyles.largeBody(context),
+          textAlign: TextAlign.center,
+        ),
+        SizedBox(height: DesmosPlatform.isMobile(context) ? 16 : 24),
+        PrimaryButton(
+            text: AppLocalizations.of(context)!.confirmPasswordButtonText,
+            onPressed: () {
+              DesmosRoutes.navigateToUnlockWallet(context);
+            }),
+      ],
+    );
   }
 
   void _saveMnemonic(BuildContext context) {

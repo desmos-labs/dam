@@ -35,8 +35,8 @@ class VerifyMnemonicPage extends StatelessWidget {
                   SizedBox(height: 8),
                 ],
               ),
-              onNext: (words, accountsNumber) {
-                _onNext(context, words, accountsNumber);
+              onNext: (words) {
+                _onNext(context, words);
               },
             )
             // LoadingBar(),
@@ -47,7 +47,7 @@ class VerifyMnemonicPage extends StatelessWidget {
   }
 
   /// Called when the user presses the "Next" button.
-  void _onNext(BuildContext context, List<String> words, int accountsNumber) {
+  void _onNext(BuildContext context, List<String> words) {
     DesmosRoutes.navigateToCreatePassword(context, words);
   }
 }
