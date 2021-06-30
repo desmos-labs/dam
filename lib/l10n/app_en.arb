@@ -15,7 +15,7 @@
   "@generateAccount": {
     "description": "Text of the button that allows the user to generate an account"
   },
-  "importMnemonic": "Import mnemonic phrase and generate address",
+  "importMnemonic": "Import secret recovery phrase",
   "@importMnemonic": {
     "description": "Text of the button that allows the user to import a mnemonic phrase"
   },
@@ -23,7 +23,7 @@
   "@generateAccountPageTitle": {
     "description": "Title of the page used to generate a new account"
   },
-  "writeSaveMnemonic": "Please write down and save your mnemonic phrase.",
+  "writeSaveMnemonic": "Please write down and save your secret recovery phrase.",
   "@writeSaveMnemonic": {
     "description": "Text used to tell the user to write down and save the mnemonic phrase"
   },
@@ -51,19 +51,19 @@
   "@random": {
     "description": "This text will be present inside the button that allows to generate a random mnemonic phrase"
   },
-  "verifyMnemonicPageTitle": "Verify mnemonic",
+  "verifyMnemonicPageTitle": "Verify secret recovery phrase",
   "@verifyMnemonicPageTitle": {
     "description": "Title of the page that requires the user to insert the generated mnemonic phrase to verify it"
   },
-  "verifyMnemonicPageBody": "Please insert the mnemonic phrase that was generated in the previous page.",
+  "verifyMnemonicPageBody": "Please insert the secret recovery phrase that was generated in the previous page.",
   "@verifyMnemonicPageBody": {
     "description": "Body of the page that requires the user to insert the generated mnemonic phrase to verify it"
   },
-  "importMnemonicPageTitle": "Import mnemonic phrase",
+  "importMnemonicPageTitle": "Import secret recovery phrase",
   "@importMnemonicPageTitle": {
     "description": "Title of the page that will be used to import an existing mnemonic phrase"
   },
-  "importMnemonicBody": "Make sure you enter your mnemonic phrase in order and that each word is written correctly.",
+  "importMnemonicBody": "Make sure you enter your secret recovery phrase in order and that each word is written correctly.",
   "@importMnemonicBody": {
     "description": "Text used to tell the user to insert their mnemonic phrase"
   },
@@ -71,7 +71,7 @@
   "@nextButtonText": {
     "description": "Button used to go to the next page when the user has imported their mnemonic phrase"
   },
-  "mnemonicNotValidError": "Mnemonic is not valid",
+  "mnemonicNotValidError": "Secret recovery phrase is not valid",
   "@mnemonicNotValidError": {
     "description": "Error message that is shown to the user when the mnemonic is not valid"
   },
