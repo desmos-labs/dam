@@ -1,10 +1,12 @@
 import 'dart:ffi';
 import 'dart:io';
 import 'dart:typed_data';
+
 import 'package:dam/preferences/preferences.dart';
 import 'package:dam/utils/export.dart';
 import 'package:ffi/ffi.dart';
 import 'package:flutter/foundation.dart';
+
 import 'crw_preferences_binding.g.dart' as binding;
 
 late final binding.PreferencesBinding _binding = _loadDynamicLib();
@@ -17,6 +19,12 @@ binding.PreferencesBinding _loadDynamicLib() {
       lib = DynamicLibrary.open('./linux/lib/libcrw_preferences.so');
     } else {
       lib = DynamicLibrary.process();
+    }
+  } else if (Platform.isWindows) {
+    if (kDebugMode) {
+      lib = DynamicLibrary.open('.\\windows\\lib\\crw_preferences.dll');
+    } else {
+      lib = DynamicLibrary.open('crw_preferences.dll');
     }
   } else if (Platform.isAndroid) {
     lib = DynamicLibrary.open('libcrw_preferences.so');
