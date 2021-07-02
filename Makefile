@@ -25,15 +25,15 @@ build-docker:
 	flutter build web --release
 	docker build --build-arg UID=$(shell id -u) --build-arg GID=$(shell id -g) -f ./Dockerfile --tag desmoslabs/dam build/web
 
-build-linux: run-code-generators
+build-linux:
 	flutter build linux --release
 	@echo "Build available inside build/linux/release/bundle"
 
-build-android: run-code-generators
+build-android:
 	flutter build apk --target-platform android-arm,android-arm64 --split-per-abi
 	@echo "Build available inside build/app/outputs/flutter-apk"
 
-build-windows: run-code-generators
+build-windows:
 	flutter build windows --release
 
 .PHONY: lint format generate-lib build-docke
