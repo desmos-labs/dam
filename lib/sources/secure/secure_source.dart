@@ -1,4 +1,4 @@
-import 'package:dam/preferences/preferences.dart';
+import 'package:preferences/preferences.dart';
 import 'package:meta/meta.dart';
 
 /// Source that can be used to securely store data into the device storage.

@@ -5,6 +5,7 @@ analyzer:
     - build/**
     - lib/proto/**
     - lib/**/*.g.dart
+    - packages/**/*.g.dart
     - lib/**/*.reflectable.dart
 
     - test/**/*.g.dart
