@@ -18,6 +18,8 @@ target_include_directories(${PLUGIN_NAME} INTERFACE
 target_link_libraries(${PLUGIN_NAME} PRIVATE flutter)
 target_link_libraries(${PLUGIN_NAME} PRIVATE PkgConfig::GTK)
 
+target_link_libraries(${PLUGIN_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/libcrw_preferences.so)
+
 set(preferences_bundled_libraries
   "${CMAKE_CURRENT_SOURCE_DIR}/libcrw_preferences.so"
   PARENT_SCOPE

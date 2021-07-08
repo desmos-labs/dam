@@ -17,7 +17,7 @@ binding.PreferencesBinding _loadDynamicLib() {
 
   if (Platform.isLinux) {
     if (!testMode) {
-      lib = DynamicLibrary.open('libcrw_preferences.so');
+      lib = DynamicLibrary.process();
     } else {
       lib = DynamicLibrary.open('./linux/libcrw_preferences.so');
     }
