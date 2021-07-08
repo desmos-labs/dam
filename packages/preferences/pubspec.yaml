@@ -38,6 +38,8 @@ flutter:
         pluginClass: PreferencesPlugin
       linux:
         pluginClass: PreferencesPlugin
+      macos:
+        pluginClass: PreferencesPlugin
       windows:
         pluginClass: PreferencesPlugin
 #      web:
