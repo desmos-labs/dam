@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dam/di/di.dart';
+import 'package:flutter/foundation.dart';
 import 'package:preferences/preferences.dart';
 import 'package:dam/ui/export.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +12,13 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Di.setup();
 
-  if (Platform.isWindows | Platform.isLinux | Platform.isMacOS) {
-    Preferences.setAppDir('dam');
-  } else if (Platform.isAndroid) {
-    var appDocDir = await getApplicationDocumentsDirectory();
-    Preferences.setAppDir(appDocDir.path);
+  if (!kIsWeb) {
+    if (Platform.isWindows | Platform.isLinux | Platform.isMacOS) {
+      Preferences.setAppDir('dam');
+    } else if (Platform.isAndroid) {
+      var appDocDir = await getApplicationDocumentsDirectory();
+      Preferences.setAppDir(appDocDir.path);
+    }
   }
 
   if (DesmosPlatform.isDesktop) {

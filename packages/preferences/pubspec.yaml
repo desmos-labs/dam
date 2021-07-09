@@ -42,9 +42,9 @@ flutter:
         pluginClass: PreferencesPlugin
       windows:
         pluginClass: PreferencesPlugin
-#      web:
-#        pluginClass: PreferencesWeb
-#        fileName: preferences_web.dart
+      web:
+        pluginClass: PreferencesWeb
+        fileName: preferences_web.dart
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

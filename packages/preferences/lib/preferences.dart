@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'preferences_stub.dart'
+    if (dart.library.js) 'web/crw_preferences_wasm.dart'
     if (dart.library.io) 'native/crw_preferences_native.dart';
 
 /// Abstract class that represents the Preference trait exposed from the
