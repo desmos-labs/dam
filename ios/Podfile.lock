@@ -1,0 +1,34 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutter_isolate (0.0.1):
+    - Flutter
+  - path_provider (0.0.1):
+    - Flutter
+  - preferences (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_isolate (from `.symlinks/plugins/flutter_isolate/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - preferences (from `.symlinks/plugins/preferences/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_isolate:
+    :path: ".symlinks/plugins/flutter_isolate/ios"
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
+  preferences:
+    :path: ".symlinks/plugins/preferences/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  flutter_isolate: 9cf6cf91009aeb6d60999879d9ac624e267f3b4e
+  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  preferences: c27829e3d2289eeda68f0dc3b68d87755d31ff6c
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.0.beta.2

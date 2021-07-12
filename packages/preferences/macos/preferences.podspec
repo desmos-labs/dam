@@ -13,8 +13,10 @@ crw-preferences FFI bindings.
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Manuel Turetta' => 'manuel@forbole.com' }
   s.source           = { :path => '.' }
+  s.public_header_files = 'Classes**/*.h'
   s.source_files     = 'Classes/**/*'
-  s.vendored_libraries = "libcrw_preferences.dylib"
+  s.static_framework = true
+  s.vendored_libraries = "libcrw_preferences.a"
   s.dependency 'FlutterMacOS'
 
   s.platform = :osx, '10.11'

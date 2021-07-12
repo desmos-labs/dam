@@ -24,7 +24,7 @@ binding.PreferencesBinding _loadDynamicLib() {
   } else if (Platform.isWindows) {
     lib = DynamicLibrary.open('crw_preferences.dll');
   } else if (Platform.isMacOS) {
-    lib = DynamicLibrary.open('libcrw_preferences.dylib');
+    lib = DynamicLibrary.process();
   } else if (Platform.isAndroid) {
     lib = DynamicLibrary.open('libcrw_preferences.so');
   } else if (Platform.isIOS) {
