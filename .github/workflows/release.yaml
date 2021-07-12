@@ -98,7 +98,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: dam-macos-x64.app
-          path: 'build/macos/Build/Products/Release/Desmos Account Manager.app/*'
+          path: 'build/macos/Build/Products/Release/dam.app/*'
 
   build-ios:
     name: Create ios ipa
