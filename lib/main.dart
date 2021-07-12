@@ -11,11 +11,10 @@ import 'package:window_size/window_size.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Di.setup();
-
   if (!kIsWeb) {
     if (Platform.isWindows | Platform.isLinux | Platform.isMacOS) {
       Preferences.setAppDir('dam');
-    } else if (Platform.isAndroid) {
+    } else if (Platform.isAndroid | Platform.isIOS) {
       var appDocDir = await getApplicationDocumentsDirectory();
       Preferences.setAppDir(appDocDir.path);
     }

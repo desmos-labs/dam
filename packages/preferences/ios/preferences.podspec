@@ -13,9 +13,10 @@ crw-preferences FFI bindings.
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Manuel Turetta' => 'manuel@forbole.com' }
   s.source           = { :path => '.' }
+  s.public_header_files = 'Classes**/*.h'
   s.source_files = 'Classes/**/*'
   s.static_framework = true
-  s.vendored_libraries = "*.a"
+  s.vendored_libraries = "libcrw_preferences.a"
   s.dependency 'Flutter'
   s.platform = :ios, '8.0'
 
