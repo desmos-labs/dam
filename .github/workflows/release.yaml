@@ -117,16 +117,16 @@ jobs:
 
       - name: Build 🏭
         run: |
-           flutter build ios --release --no-codesign --ios-arch=arm64
+           flutter build ios --release --no-codesign
            cd build/ios/iphoneos
            mkdir Payload
            cd Payload
            ln -s ../Runner.app
            cd ..
-           zip -r app.ipa Payload
+           zip -r dam.ipa Payload
 
       - name: Upload the artifacts 📤
         uses: actions/upload-artifact@v2
         with:
           name: dam-ios
-          path: 'build/ios/*'
+          path: 'build/ios/iphoneos/dam.ipa'
