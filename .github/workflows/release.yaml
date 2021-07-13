@@ -93,12 +93,15 @@ jobs:
         run: |
           flutter config --enable-macos-desktop
           flutter build macos --release
+          cd build/macos/Build/Products/Release
+          mkdir dam-macos-x64
+          mv dam.app dam-macos-x64
 
       - name: Upload the artifacts 📤
         uses: actions/upload-artifact@v2
         with:
           name: dam-macos-x64.app
-          path: 'build/macos/Build/Products/Release/dam.app/*'
+          path: 'build/macos/Build/Products/Release/dam-macos-x64'
 
   build-ios:
     name: Create ios ipa
