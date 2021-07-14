@@ -19,22 +19,28 @@ class DesmosAddressViewer extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
         color: Color(0xFFF1F1F1),
       ),
-      padding: EdgeInsets.all(14),
+      padding: EdgeInsets.only(top: 14, bottom: 14, left: 8, right: 8),
       child: Row(
-        mainAxisSize: MainAxisSize.max,
+        //mainAxisSize: MainAxisSize.max,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '${AppLocalizations.of(context)!.path}: ${DesmosWallet.getPath(index)}',
-                style: DesmosTextStyles.thinBodyBlack(context),
-              ),
-              Text(
-                '${AppLocalizations.of(context)!.address}: $address',
-                style: DesmosTextStyles.thinBodyBlack(context),
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${AppLocalizations.of(context)!.path}: ${DesmosWallet.getPath(index)}',
+                  style: DesmosTextStyles.thinBodyBlack(context),
+                ),
+                Text(
+                  '${AppLocalizations.of(context)!.address}:',
+                  style: DesmosTextStyles.thinBodyBlack(context),
+                ),
+                SelectableText(address,
+                  style: DesmosTextStyles.thinBodyBlack(context),
+                  maxLines: 1,
+                ),
+              ],
+            ),
           ),
         ],
       ),
