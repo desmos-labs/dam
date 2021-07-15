@@ -152,5 +152,9 @@
   "passwordDontMatch": "The password don't match",
   "@passwordDontMatch": {
     "description": "Error message displayed to inform the user that the confirm password don't match the provided password"
+  },
+  "wrongPassword": "Wrong password",
+  "@wrongPassword": {
+    "description": "Error message shown to the user when the wallet unlock password is wrong"
   }
 }

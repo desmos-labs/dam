@@ -40,14 +40,19 @@ class UnlockWalletPage extends StatelessWidget {
   Widget _unlockPage(BuildContext context, bool wrong_password) {
     return Scaffold(
         body: ContentContainer(
-            child: Center(
+            //decoration: DesmosDecorations.desmosBackground(context),
+            child: Expanded(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           PasswordField(
-              labelText: 'Password',
-              errorText: wrong_password ? 'Wrong password' : null,
+              labelText: AppLocalizations.of(context)!.password,
+              errorText: wrong_password
+                  ? AppLocalizations.of(context)!.wrongPassword
+                  : null,
               controller: _passwordController,
               onFieldSubmitted: (_) => _onUnlockPressed(context)),
+          SizedBox(height: DesmosPlatform.isMobile(context) ? 16 : 24),
           PrimaryButton(
               text: 'Unlock', onPressed: () => _onUnlockPressed(context)),
         ],

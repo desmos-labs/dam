@@ -59,8 +59,7 @@ class AccountGeneratedBody extends StatelessWidget {
               child: PrimaryButton(
                 text: AppLocalizations.of(context)!.copyAddresses,
                 onPressed: () => _onCopyPressed(context),
-              )
-          ),
+              )),
         ],
       ),
     );

@@ -35,7 +35,8 @@ class DesmosAddressViewer extends StatelessWidget {
                   '${AppLocalizations.of(context)!.address}:',
                   style: DesmosTextStyles.thinBodyBlack(context),
                 ),
-                SelectableText(address,
+                SelectableText(
+                  address,
                   style: DesmosTextStyles.thinBodyBlack(context),
                   maxLines: 1,
                 ),
