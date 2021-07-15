@@ -24,37 +24,42 @@ class AccountGeneratedBody extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
+          Flexible(
+            flex: 2,
             child: Image.asset(
               'assets/account-generated.png',
             ),
           ),
-          SizedBox(height: DesmosPlatform.isMobile(context) ? 16 : 24),
-          Text(
-            AppLocalizations.of(context)!.accountGenerated,
-            style: DesmosTextStyles.largeBody(context),
-            textAlign: TextAlign.center,
+          Flexible(
+            flex: 1,
+            child: Text(
+              AppLocalizations.of(context)!.accountGenerated,
+              style: DesmosTextStyles.largeBody(context),
+              textAlign: TextAlign.center,
+            ),
           ),
-          SizedBox(height: DesmosPlatform.isMobile(context) ? 16 : 24),
-          ListView.separated(
-            shrinkWrap: true,
-            itemCount: addresses.length + 1,
-            itemBuilder: (context, index) {
-              if (index == addresses.length) {
-                return PrimaryButton(
-                  text: AppLocalizations.of(context)!.copyAddresses,
-                  onPressed: () => _onCopyPressed(context),
+          Flexible(
+            flex: 5,
+            child: ListView.separated(
+              shrinkWrap: true,
+              itemCount: addresses.length,
+              itemBuilder: (context, index) {
+                return DesmosAddressViewer(
+                  index: index,
+                  address: addresses[index],
                 );
-              }
-
-              return DesmosAddressViewer(
-                index: index,
-                address: addresses[index],
-              );
-            },
-            separatorBuilder: (c, i) {
-              return SizedBox(height: 8);
-            },
+              },
+              separatorBuilder: (c, i) {
+                return SizedBox(height: 8);
+              },
+            ),
+          ),
+          Flexible(
+              flex: 1,
+              child: PrimaryButton(
+                text: AppLocalizations.of(context)!.copyAddresses,
+                onPressed: () => _onCopyPressed(context),
+              )
           ),
         ],
       ),
